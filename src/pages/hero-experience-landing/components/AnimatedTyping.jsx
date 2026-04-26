@@ -6,14 +6,7 @@ const AnimatedTyping = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  const texts = [
-    'JavaScript',
-    'Python',
-    'React',
-    'Node.js',
-    'TypeScript',
-    'Next.js'
-  ];
+  const texts = ['React', 'Python', 'Node.js', 'PHP', 'TensorFlow', 'Arduino', 'MySQL'];
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -23,18 +16,16 @@ const AnimatedTyping = () => {
         return;
       }
 
-      const current = texts?.[currentIndex];
-      
+      const current = texts[currentIndex];
+
       if (isDeleting) {
-        setCurrentText(current?.substring(0, currentText?.length - 1));
-        
+        setCurrentText(current.substring(0, currentText.length - 1));
         if (currentText === '') {
           setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts?.length);
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
         }
       } else {
-        setCurrentText(current?.substring(0, currentText?.length + 1));
-        
+        setCurrentText(current.substring(0, currentText.length + 1));
         if (currentText === current) {
           setIsPaused(true);
         }
@@ -47,7 +38,7 @@ const AnimatedTyping = () => {
   return (
     <div className="flex items-center space-x-2">
       <span className="text-muted-foreground">Crafting with</span>
-      <span className="text-accent font-mono font-semibold min-w-[120px] text-left">
+      <span className="text-accent font-mono font-semibold min-w-[130px] text-left">
         {currentText}
         <span className="animate-pulse">|</span>
       </span>

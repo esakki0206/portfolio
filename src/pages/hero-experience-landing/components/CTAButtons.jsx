@@ -6,15 +6,16 @@ const CTAButtons = () => {
   const navigate = useNavigate();
 
   const handleExploreProjects = () => {
-    navigate('/project-laboratory-showcase');
+    navigate('/projects');
   };
 
-  const handleViewResume = () => {
-    // Mock resume download
-    const link = document.createElement('a');
-    link.href = 'data:text/plain;charset=utf-8,Mock Resume Content - This would be a real PDF in production';
-    link.download = 'Esakkiappan_Resume.txt';
-    link?.click();
+  const handleContact = () => {
+    navigate('/about');
+    // After navigation, scroll to contact section
+    setTimeout(() => {
+      const contactEl = document.getElementById('contact-section');
+      if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
   };
 
   return (
@@ -29,16 +30,16 @@ const CTAButtons = () => {
       >
         Explore Projects
       </Button>
-      
+
       <Button
         variant="outline"
         size="lg"
-        onClick={handleViewResume}
-        iconName="Download"
+        onClick={handleContact}
+        iconName="MessageCircle"
         iconPosition="left"
         className="magnetic-button min-w-[200px] border-accent text-accent hover:bg-accent/10 hover:border-accent/80"
       >
-        View Resume
+        Get In Touch
       </Button>
     </div>
   );

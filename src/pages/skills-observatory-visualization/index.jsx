@@ -16,159 +16,107 @@ const SkillsObservatoryVisualization = () => {
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Mock skills data
+  // Real skills from actual experience
   const allSkills = [
-    {
-      id: 'javascript',
-      name: 'JavaScript',
-      category: 'Programming Languages',
-      proficiency: 95,
-      recentActivity: 85,
-      experience: '4+ years of intensive development',
-      icon: 'Code2',
-      color: 'from-yellow-500 to-orange-400',
-      description: `Advanced JavaScript developer with expertise in ES6+, async programming, and modern frameworks. Experienced in both frontend and backend development with Node.js.`,
-      certifications: ['JavaScript Algorithms', 'Advanced ES6'],
-      projects: ['E-commerce Platform', 'Real-time Chat App', 'Task Management System', 'Weather Dashboard'],
-      resources: ['MDN Web Docs', 'JavaScript.info', 'You Don\'t Know JS'],
-      satellites: [
-        { name: 'ES6+', proficiency: 90 },
-        { name: 'Async/Await', proficiency: 85 },
-        { name: 'DOM Manipulation', proficiency: 95 }
-      ]
-    },
     {
       id: 'react',
       name: 'React',
       category: 'Frameworks',
-      proficiency: 92,
+      proficiency: 82,
       recentActivity: 90,
-      experience: '3+ years building scalable applications',
+      experience: 'Used in production internship at Free Will Technologies',
       icon: 'Atom',
       color: 'from-blue-500 to-cyan-400',
-      description: `Expert React developer specializing in hooks, context API, and performance optimization. Built multiple production applications with complex state management.`,
-      certifications: ['React Developer Certification', 'Advanced React Patterns'],
-      projects: ['Portfolio Website', 'Social Media Dashboard', 'E-learning Platform'],
-      resources: ['React Documentation', 'React Patterns', 'Testing Library'],
+      description:
+        'Built the Resume Builder frontend using React. Comfortable with hooks, component composition, and state management.',
+      certifications: [],
+      projects: ['Resume Builder (Free Will Technologies)'],
+      resources: ['React Docs', 'React Router'],
       satellites: [
-        { name: 'Hooks', proficiency: 95 },
-        { name: 'Context API', proficiency: 88 },
-        { name: 'Redux', proficiency: 85 }
-      ]
+        { name: 'Hooks', proficiency: 80 },
+        { name: 'React Router', proficiency: 75 },
+        { name: 'State Mgmt', proficiency: 70 },
+      ],
+    },
+    {
+      id: 'javascript',
+      name: 'JavaScript',
+      category: 'Programming Languages',
+      proficiency: 78,
+      recentActivity: 85,
+      experience: 'Primary language for full-stack web development',
+      icon: 'Code2',
+      color: 'from-yellow-500 to-orange-400',
+      description:
+        'Used JavaScript extensively in React projects and Node.js backends. Comfortable with ES6+, async/await, and DOM manipulation.',
+      certifications: [],
+      projects: ['Resume Builder', 'Portfolio Website'],
+      resources: ['MDN Web Docs', 'javascript.info'],
+      satellites: [
+        { name: 'ES6+', proficiency: 80 },
+        { name: 'Async/Await', proficiency: 75 },
+        { name: 'DOM APIs', proficiency: 78 },
+      ],
     },
     {
       id: 'python',
       name: 'Python',
       category: 'Programming Languages',
-      proficiency: 88,
+      proficiency: 80,
       recentActivity: 75,
-      experience: '3+ years in data science and web development',
+      experience: 'First language learned; used in ML coursework',
       icon: 'Code',
       color: 'from-green-500 to-emerald-400',
-      description: `Versatile Python developer with experience in web development, data analysis, and machine learning. Proficient in Django, Flask, and scientific computing libraries.`,
-      certifications: ['Python Institute PCAP', 'Data Science with Python'],
-      projects: ['Data Analysis Dashboard', 'ML Prediction Model', 'Web Scraping Tool'],
-      resources: ['Python.org', 'Real Python', 'Automate the Boring Stuff'],
+      description:
+        'Started coding in Python. Used it for algorithms coursework, data analysis, and building the CIFAR-10 CNN image classifier.',
+      certifications: [],
+      projects: ['CIFAR-10 CNN Classifier', 'Algorithm Implementations'],
+      resources: ['Python.org', 'Real Python'],
       satellites: [
-        { name: 'Django', proficiency: 80 },
-        { name: 'Pandas', proficiency: 85 },
-        { name: 'NumPy', proficiency: 82 }
-      ]
+        { name: 'NumPy', proficiency: 72 },
+        { name: 'Pandas', proficiency: 68 },
+        { name: 'Matplotlib', proficiency: 70 },
+      ],
     },
     {
-      id: 'nodejs',
-      name: 'Node.js',
+      id: 'php',
+      name: 'PHP',
       category: 'Frameworks',
-      proficiency: 85,
+      proficiency: 70,
       recentActivity: 80,
-      experience: '2+ years building server-side applications',
+      experience: 'Used at Free Will Technologies internship for backend APIs',
       icon: 'Server',
-      color: 'from-green-600 to-lime-400',
-      description: `Backend developer with Node.js expertise in building RESTful APIs, microservices, and real-time applications using Express.js and Socket.io.`,
-      certifications: ['Node.js Application Developer'],
-      projects: ['REST API Server', 'Real-time Chat Backend', 'Microservices Architecture'],
-      resources: ['Node.js Docs', 'Express.js Guide', 'Node.js Best Practices'],
+      color: 'from-indigo-500 to-violet-400',
+      description:
+        'Built REST API endpoints for the Resume Builder backend using PHP. Handled form data, session management, and database operations.',
+      certifications: [],
+      projects: ['Resume Builder (Free Will Technologies)'],
+      resources: ['PHP Manual', 'PHP: The Right Way'],
       satellites: [
-        { name: 'Express.js', proficiency: 90 },
-        { name: 'Socket.io', proficiency: 75 },
-        { name: 'MongoDB', proficiency: 80 }
-      ]
+        { name: 'REST APIs', proficiency: 72 },
+        { name: 'Sessions', proficiency: 68 },
+        { name: 'File Handling', proficiency: 65 },
+      ],
     },
     {
-      id: 'git',
-      name: 'Git',
-      category: 'Tools',
-      proficiency: 90,
-      recentActivity: 95,
-      experience: '4+ years of version control mastery',
-      icon: 'GitBranch',
-      color: 'from-orange-500 to-red-400',
-      description: `Advanced Git user with expertise in branching strategies, merge conflict resolution, and collaborative workflows. Experienced with GitHub, GitLab, and Bitbucket.`,
-      certifications: ['Git Version Control'],
-      projects: ['Open Source Contributions', 'Team Collaboration Projects'],
-      resources: ['Pro Git Book', 'Atlassian Git Tutorials', 'GitHub Learning Lab'],
-      satellites: [
-        { name: 'GitHub', proficiency: 95 },
-        { name: 'GitLab', proficiency: 80 },
-        { name: 'Branching', proficiency: 90 }
-      ]
-    },
-    {
-      id: 'docker',
-      name: 'Docker',
-      category: 'Tools',
-      proficiency: 78,
-      recentActivity: 70,
-      experience: '2+ years containerizing applications',
-      icon: 'Package',
-      color: 'from-blue-600 to-indigo-400',
-      description: `Container technology specialist with experience in Docker containerization, multi-stage builds, and Docker Compose for development environments.`,
-      certifications: ['Docker Certified Associate'],
-      projects: ['Containerized Web Apps', 'Development Environment Setup'],
-      resources: ['Docker Documentation', 'Docker Deep Dive', 'Container Best Practices'],
-      satellites: [
-        { name: 'Docker Compose', proficiency: 85 },
-        { name: 'Dockerfile', proficiency: 80 },
-        { name: 'Container Registry', proficiency: 70 }
-      ]
-    },
-    {
-      id: 'aws',
-      name: 'AWS',
-      category: 'Cloud',
-      proficiency: 72,
-      recentActivity: 60,
-      experience: '1+ year cloud infrastructure experience',
-      icon: 'Cloud',
-      color: 'from-yellow-600 to-orange-500',
-      description: `Cloud computing enthusiast with hands-on experience in AWS services including EC2, S3, Lambda, and RDS. Currently expanding knowledge in serverless architectures.`,
-      certifications: ['AWS Cloud Practitioner'],
-      projects: ['Static Website Hosting', 'Serverless API', 'Database Migration'],
-      resources: ['AWS Documentation', 'A Cloud Guru', 'AWS Well-Architected Framework'],
-      satellites: [
-        { name: 'EC2', proficiency: 75 },
-        { name: 'S3', proficiency: 80 },
-        { name: 'Lambda', proficiency: 65 }
-      ]
-    },
-    {
-      id: 'mongodb',
-      name: 'MongoDB',
+      id: 'mysql',
+      name: 'MySQL',
       category: 'Databases',
-      proficiency: 82,
-      recentActivity: 65,
-      experience: '2+ years NoSQL database experience',
+      proficiency: 72,
+      recentActivity: 75,
+      experience: 'Used in internship and Database Systems coursework',
       icon: 'Database',
-      color: 'from-green-600 to-teal-400',
-      description: `NoSQL database specialist with expertise in MongoDB design patterns, aggregation pipelines, and performance optimization. Experienced in both standalone and replica set configurations.`,
-      certifications: ['MongoDB Developer'],
-      projects: ['User Management System', 'Content Management Platform', 'Analytics Dashboard'],
-      resources: ['MongoDB University', 'MongoDB Manual', 'NoSQL Design Patterns'],
+      color: 'from-orange-500 to-amber-400',
+      description:
+        'Designed the resume database schema during my internship, and studied relational database normalisation and advanced SQL in coursework.',
+      certifications: [],
+      projects: ['Resume Builder (Free Will Technologies)', 'E-commerce DB Design (Coursework)'],
+      resources: ['MySQL Docs', 'Use The Index, Luke'],
       satellites: [
-        { name: 'Mongoose', proficiency: 85 },
-        { name: 'Aggregation', proficiency: 80 },
-        { name: 'Indexing', proficiency: 75 }
-      ]
+        { name: 'SQL Queries', proficiency: 75 },
+        { name: 'Schema Design', proficiency: 70 },
+        { name: 'Indexing', proficiency: 65 },
+      ],
     },
     {
       id: 'tensorflow',
@@ -176,104 +124,137 @@ const SkillsObservatoryVisualization = () => {
       category: 'Emerging Tech',
       proficiency: 65,
       recentActivity: 85,
-      experience: '1+ year machine learning exploration',
+      experience: 'Used in ML coursework to build CIFAR-10 CNN',
       icon: 'Brain',
-      color: 'from-purple-500 to-pink-400',
-      description: `Machine learning enthusiast exploring deep learning with TensorFlow. Currently working on computer vision and natural language processing projects.`,
-      certifications: ['TensorFlow Developer Certificate (In Progress)'],
-      projects: ['Image Classification Model', 'Sentiment Analysis Tool', 'Recommendation System'],
-      resources: ['TensorFlow Documentation', 'Deep Learning Specialization', 'Hands-On ML'],
+      color: 'from-orange-600 to-red-400',
+      description:
+        'Built and trained a CNN achieving 94% accuracy on CIFAR-10 using TensorFlow/Keras, including data augmentation and batch normalisation.',
+      certifications: [],
+      projects: ['CIFAR-10 CNN Classifier'],
+      resources: ['TensorFlow Docs', 'Deep Learning with Python'],
       satellites: [
-        { name: 'Keras', proficiency: 70 },
-        { name: 'Neural Networks', proficiency: 60 },
-        { name: 'Computer Vision', proficiency: 65 }
-      ]
+        { name: 'Keras', proficiency: 68 },
+        { name: 'CNNs', proficiency: 65 },
+        { name: 'Data Augmentation', proficiency: 62 },
+      ],
     },
     {
-      id: 'blockchain',
-      name: 'Blockchain',
+      id: 'arduino',
+      name: 'Arduino / C++',
       category: 'Emerging Tech',
-      proficiency: 55,
-      recentActivity: 40,
-      experience: '6 months exploring decentralized technologies',
-      icon: 'Link',
-      color: 'from-indigo-500 to-purple-400',
-      description: `Blockchain technology explorer with basic understanding of smart contracts, cryptocurrency, and decentralized applications. Currently learning Solidity and Web3 development.`,
-      certifications: ['Blockchain Basics'],
-      projects: ['Simple Smart Contract', 'Cryptocurrency Tracker', 'NFT Marketplace Concept'],
-      resources: ['Ethereum Documentation', 'Solidity by Example', 'Web3 University'],
+      proficiency: 60,
+      recentActivity: 70,
+      experience: 'Built Budget-Friendly CCTV prototype at Innovathon',
+      icon: 'Cpu',
+      color: 'from-teal-500 to-cyan-400',
+      description:
+        'Programmed an ESP32-CAM module in C++ via the Arduino IDE to stream live MJPEG video over Wi-Fi for a hackathon project.',
+      certifications: [],
+      projects: ['Budget-Friendly CCTV (Innovathon)'],
+      resources: ['Arduino Docs', 'ESP32 Programming Guide'],
       satellites: [
-        { name: 'Solidity', proficiency: 50 },
-        { name: 'Web3.js', proficiency: 45 },
-        { name: 'Smart Contracts', proficiency: 55 }
-      ]
-    }
+        { name: 'ESP32-CAM', proficiency: 65 },
+        { name: 'Wi-Fi Streaming', proficiency: 60 },
+        { name: 'Embedded C++', proficiency: 58 },
+      ],
+    },
+    {
+      id: 'git',
+      name: 'Git',
+      category: 'Tools',
+      proficiency: 75,
+      recentActivity: 90,
+      experience: 'Daily version control across all projects',
+      icon: 'GitBranch',
+      color: 'from-orange-500 to-red-400',
+      description:
+        'Use Git daily for version control. Comfortable with branching, rebasing, pull requests, and collaborative workflows on GitHub.',
+      certifications: [],
+      projects: ['All Projects'],
+      resources: ['Pro Git Book', 'GitHub Docs'],
+      satellites: [
+        { name: 'GitHub', proficiency: 80 },
+        { name: 'Branching', proficiency: 75 },
+        { name: 'Pull Requests', proficiency: 72 },
+      ],
+    },
+    {
+      id: 'nodejs',
+      name: 'Node.js',
+      category: 'Frameworks',
+      proficiency: 60,
+      recentActivity: 60,
+      experience: 'Learning for backend development alongside PHP',
+      icon: 'Server',
+      color: 'from-green-600 to-lime-400',
+      description:
+        'Exploring Node.js and Express for building REST APIs and server-side applications alongside PHP.',
+      certifications: [],
+      projects: ['Personal Projects'],
+      resources: ['Node.js Docs', 'Express.js Guide'],
+      satellites: [
+        { name: 'Express.js', proficiency: 58 },
+        { name: 'REST APIs', proficiency: 60 },
+        { name: 'npm', proficiency: 70 },
+      ],
+    },
+    {
+      id: 'algorithms',
+      name: 'Algorithms',
+      category: 'Computer Science',
+      proficiency: 82,
+      recentActivity: 80,
+      experience: 'Core coursework — Merge Sort, BFS, DFS, Dijkstra, DP',
+      icon: 'Network',
+      color: 'from-purple-500 to-pink-400',
+      description:
+        'Strong foundation in algorithmic thinking from coursework. Implemented and analysed sorting, graph, and dynamic programming algorithms.',
+      certifications: [],
+      projects: ['Algorithm Coursework', 'Data Structures Lab'],
+      resources: ['CLRS', 'LeetCode'],
+      satellites: [
+        { name: 'Sorting', proficiency: 85 },
+        { name: 'Graph Algos', proficiency: 80 },
+        { name: 'Dynamic Prog.', proficiency: 75 },
+      ],
+    },
   ];
 
-  // Mock progress data for skills
-  const skillProgressData = {
-    'javascript': [
-      { date: '2021-01', value: 60, label: 'Started Learning' },
-      { date: '2021-06', value: 75, label: 'First Project' },
-      { date: '2022-01', value: 85, label: 'Advanced Concepts' },
-      { date: '2022-06', value: 90, label: 'Framework Mastery' },
-      { date: '2023-01', value: 95, label: 'Expert Level' }
-    ],
-    'react': [
-      { date: '2021-03', value: 40, label: 'Introduction' },
-      { date: '2021-08', value: 65, label: 'Component Mastery' },
-      { date: '2022-02', value: 80, label: 'Hooks & Context' },
-      { date: '2022-08', value: 90, label: 'Advanced Patterns' },
-      { date: '2023-02', value: 92, label: 'Performance Optimization' }
-    ],
-    'python': [
-      { date: '2020-09', value: 30, label: 'Basics' },
-      { date: '2021-03', value: 55, label: 'Data Structures' },
-      { date: '2021-09', value: 70, label: 'Web Development' },
-      { date: '2022-03', value: 82, label: 'Data Science' },
-      { date: '2022-09', value: 88, label: 'Machine Learning' }
-    ]
-  };
-
-  // Check if mobile
+  // Check mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Filter skills based on search, category, and view
-  const filteredSkills = allSkills?.filter(skill => {
-    const matchesSearch = skill?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
-                         skill?.category?.toLowerCase()?.includes(searchTerm?.toLowerCase());
-    
-    const matchesCategory = selectedCategory === 'all' || skill?.category === selectedCategory;
-    
-    const matchesView = selectedView === 'all' || 
-                       (selectedView === 'fullstack' && ['Programming Languages', 'Frameworks', 'Databases']?.includes(skill?.category)) ||
-                       (selectedView === 'datascience' && ['Python', 'TensorFlow', 'MongoDB']?.includes(skill?.name)) ||
-                       (selectedView === 'mobile' && ['JavaScript', 'React']?.includes(skill?.name)) ||
-                       (selectedView === 'devops' && ['Tools', 'Cloud']?.includes(skill?.category));
+  const filteredSkills = allSkills.filter((skill) => {
+    const matchesSearch =
+      skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      skill.category.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesCategory = selectedCategory === 'all' || skill.category === selectedCategory;
+
+    const matchesView =
+      selectedView === 'all' ||
+      (selectedView === 'fullstack' &&
+        ['Programming Languages', 'Frameworks', 'Databases'].includes(skill.category)) ||
+      (selectedView === 'datascience' &&
+        ['Python', 'TensorFlow', 'MySQL'].includes(skill.name)) ||
+      (selectedView === 'devops' && ['Tools'].includes(skill.category)) ||
+      (selectedView === 'mobile' && ['JavaScript', 'React'].includes(skill.name));
 
     return matchesSearch && matchesCategory && matchesView;
   });
 
-  const categories = [...new Set(allSkills.map(skill => skill.category))];
+  const categories = [...new Set(allSkills.map((s) => s.category))];
 
   const handleSkillSelect = (skill) => {
     setSelectedSkill(skill);
-    if (isMobile) {
-      setIsFilterPanelOpen(false);
-    }
+    if (isMobile) setIsFilterPanelOpen(false);
   };
 
-  const handleCloseSidebar = () => {
-    setSelectedSkill(null);
-  };
+  const handleCloseSidebar = () => setSelectedSkill(null);
 
   return (
     <div className="min-h-screen bg-background">
@@ -282,18 +263,18 @@ const SkillsObservatoryVisualization = () => {
         {/* Filter Panel */}
         <motion.div
           className={`${
-            isMobile 
-              ? `fixed left-0 top-16 h-full w-80 bg-card border-r border-border shadow-elevation-3 z-30 transform ${
+            isMobile
+              ? `fixed left-0 top-16 h-full w-72 bg-card border-r border-border shadow-elevation-3 z-30 transform ${
                   isFilterPanelOpen ? 'translate-x-0' : '-translate-x-full'
                 }`
-              : 'w-80 bg-card border-r border-border'
+              : 'w-72 bg-card border-r border-border'
           } transition-transform duration-300 ease-in-out`}
         >
           <div className="p-6 h-full overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-2xl font-bold text-gradient">Skills Observatory</h1>
-                <p className="text-sm text-muted-foreground">Interactive skill visualization</p>
+                <h1 className="text-xl font-bold text-gradient">Skills</h1>
+                <p className="text-sm text-muted-foreground">Interactive visualisation</p>
               </div>
               {isMobile && (
                 <Button
@@ -330,41 +311,44 @@ const SkillsObservatoryVisualization = () => {
             />
           )}
 
-          {/* Universe Visualization */}
+          {/* Universe Visualisation */}
           <div className="h-full">
             <SkillUniverse
-  skills={filteredSkills}
-  selectedSkill={selectedSkill}
-  onSkillSelect={handleSkillSelect}
-  hoveredSkill={hoveredSkill}
-  onSkillHover={setHoveredSkill}
-  selectedView={selectedView}
-/>
+              skills={filteredSkills}
+              selectedSkill={selectedSkill}
+              onSkillSelect={handleSkillSelect}
+              hoveredSkill={hoveredSkill}
+              onSkillHover={setHoveredSkill}
+              selectedView={selectedView}
+            />
           </div>
 
           {/* Stats Overlay */}
-          <div className="absolute top-4 right-4 glass-card p-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-accent">{filteredSkills?.length}</div>
-              <div className="text-xs text-muted-foreground">Skills Visible</div>
-            </div>
-            <div className="mt-2 text-center">
-              <div className="text-lg font-semibold text-success">
-                {Math.round(filteredSkills?.reduce((acc, skill) => acc + skill?.proficiency, 0) / filteredSkills?.length)}%
+          {filteredSkills.length > 0 && (
+            <div className="absolute top-4 right-4 glass-card p-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-accent">{filteredSkills.length}</div>
+                <div className="text-xs text-muted-foreground">Skills</div>
               </div>
-              <div className="text-xs text-muted-foreground">Avg Proficiency</div>
+              <div className="mt-2 text-center">
+                <div className="text-lg font-semibold text-success">
+                  {Math.round(
+                    filteredSkills.reduce((acc, s) => acc + s.proficiency, 0) /
+                      filteredSkills.length
+                  )}%
+                </div>
+                <div className="text-xs text-muted-foreground">Avg Proficiency</div>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Empty State */}
-          {filteredSkills?.length === 0 && (
+          {filteredSkills.length === 0 && (
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
                 <Icon name="Search" size={64} className="mx-auto mb-4 text-muted-foreground opacity-50" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">No Skills Found</h3>
-                <p className="text-muted-foreground mb-4">
-                  Try adjusting your filters or search terms
-                </p>
+                <p className="text-muted-foreground mb-4">Try adjusting your filters</p>
                 <Button
                   variant="outline"
                   onClick={() => {
@@ -387,7 +371,7 @@ const SkillsObservatoryVisualization = () => {
           <SkillSidebar
             selectedSkill={selectedSkill}
             onClose={handleCloseSidebar}
-            skillProgressData={skillProgressData}
+            skillProgressData={{}}
           />
         )}
 

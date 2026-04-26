@@ -13,6 +13,8 @@ const AchievementCard = ({ achievement, index, isExpanded, onToggle }) => {
       case 'Certifications': return 'Award';
       case 'Competitions': return 'Trophy';
       case 'Recognition': return 'Star';
+      case 'Experience': return 'Briefcase';
+      case 'Projects': return 'Code2';
       default: return 'Medal';
     }
   };
@@ -23,6 +25,8 @@ const AchievementCard = ({ achievement, index, isExpanded, onToggle }) => {
       case 'Certifications': return 'from-green-500 to-emerald-600';
       case 'Competitions': return 'from-yellow-500 to-orange-600';
       case 'Recognition': return 'from-purple-500 to-pink-600';
+      case 'Experience': return 'from-cyan-500 to-blue-600';
+      case 'Projects': return 'from-violet-500 to-purple-600';
       default: return 'from-accent to-success';
     }
   };
