@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #020617; /* slate-950 - True depth, immersive canvas */
+    --color-foreground: #F8FAFC; /* slate-50 - Extended reading comfort, high clarity */
+    --color-card: #1E293B; /* slate-800 - Subtle content elevation, card surfaces */
+    --color-card-foreground: #F8FAFC; /* slate-50 - High contrast for card content */
+    --color-popover: #1E293B; /* slate-800 - Consistent with card surfaces */
+    --color-popover-foreground: #F8FAFC; /* slate-50 - Clear popover text */
+    --color-muted: #334155; /* slate-700 - Gentle content separation, readable contrast */
+    --color-muted-foreground: #94A3B8; /* slate-400 - Supporting information, clear hierarchy */
+    
+    /* Primary Brand Colors */
+    --color-primary: #0A0E1A; /* slate-900 - Deep focus background, professional depth */
+    --color-primary-foreground: #F8FAFC; /* slate-50 - High contrast on primary */
+    --color-secondary: #1E293B; /* slate-800 - Subtle content elevation */
+    --color-secondary-foreground: #F8FAFC; /* slate-50 - Clear secondary text */
+    
+    /* Interactive Colors */
+    --color-accent: #00F5FF; /* cyan-400 - Interactive elements, technical highlights */
+    --color-accent-foreground: #0A0E1A; /* slate-900 - Dark text on bright accent */
+    
+    /* Status Colors */
+    --color-success: #10B981; /* emerald-500 - Positive feedback, completed states */
+    --color-success-foreground: #F8FAFC; /* slate-50 - Clear success text */
+    --color-warning: #F59E0B; /* amber-500 - Attention without alarm, important notices */
+    --color-warning-foreground: #0A0E1A; /* slate-900 - Dark text on warning */
+    --color-error: #EF4444; /* red-500 - Clear problem indication, helpful guidance */
+    --color-error-foreground: #F8FAFC; /* slate-50 - Clear error text */
+    --color-destructive: #EF4444; /* red-500 - Destructive actions */
+    --color-destructive-foreground: #F8FAFC; /* slate-50 - Clear destructive text */
+    
+    /* Form Elements */
+    --color-border: #334155; /* slate-700 - Minimal borders for form inputs */
+    --color-input: #1E293B; /* slate-800 - Input background */
+    --color-ring: #00F5FF; /* cyan-400 - Focus ring color */
+    
+    /* Surface Colors */
+    --color-surface: #334155; /* slate-700 - Gentle content separation */
+    
+    /* Text Colors */
+    --color-text-primary: #F8FAFC; /* slate-50 - Primary text color */
+    --color-text-secondary: #94A3B8; /* slate-400 - Secondary text color */
+    
+    /* Radius */
+    --radius: 0.5rem; /* 8px - Consistent border radius */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Effects */
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg;
+  }
+  
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+  
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+  }
+  
+  /* Particle Animation */
+  .particle-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Code Syntax Highlighting */
+  .code-highlight {
+    @apply bg-slate-800/50 border border-slate-700 rounded-md p-4;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Interactive Hover States */
+  .interactive-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .interactive-lift:hover {
+    @apply transform -translate-y-1 shadow-2xl;
+  }
+  
+  /* Magnetic Button Effect */
+  .magnetic-button {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+  }
+  
+  .magnetic-button:hover {
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 10px 25px rgba(0, 245, 255, 0.3);
+  }
+  
+  /* Timeline Constellation */
+.timeline-node  {
+    @apply relative transition-all;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  @keyframes scaleIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Holographic Interface */
+  .holographic-border {
+    @apply relative;
+  }
+  
+  .holographic-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-lg;
+    background: linear-gradient(45deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+    animation: holographic 3s linear infinite;
+  }
+  
+  @keyframes holographic {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-slate-800;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-600 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent;
+  }
+  
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #00F5FF, #10B981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Backdrop Blur Utilities */
+  .backdrop-blur-glass {
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Animation Utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+  
+  /* Focus Visible */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
