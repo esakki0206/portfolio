@@ -9,10 +9,10 @@ const SkillUniverse = ({
   onSkillSelect, 
   hoveredSkill, 
   onSkillHover,
-  selectedView 
+  selectedView,
+  isMobile
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [universeRotation, setUniverseRotation] = useState(0);
   const [planetPositions, setPlanetPositions] = useState({});
   const universeRef = useRef(null);
   const animationFrameRef = useRef(null);
@@ -20,13 +20,14 @@ const SkillUniverse = ({
 
   // Track mouse position for tooltip
   useEffect(() => {
+    if (isMobile) return; // Don't track mouse on mobile
     const handleMouseMove = (e) => {
       setMousePosition({ x: e?.clientX, y: e?.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [isMobile]);
 
   // Calculate planet size based on proficiency
   const getPlanetSize = useCallback((proficiency) => {
@@ -34,20 +35,41 @@ const SkillUniverse = ({
   }, []);
 
   // Force-directed layout to prevent overlapping
-  const calculateNonOverlappingPositions = useCallback((skillsArray, view) => {
+  const calculateNonOverlappingPositions = useCallback((skillsArray, view, mobile) => {
     const positions = {};
-    const centerX = 50;
-    const centerY = 50;
-    const maxRadius = 40; // Maximum distance from center
+    
+    if (mobile) {
+      // Clean stacked grid layout for mobile
+      skillsArray?.forEach((skill, index) => {
+        const row = Math.floor(index / 2);
+        const col = index % 2;
+        positions[skill.id] = {
+          x: col === 0 ? 30 : 70, // Two columns
+          y: 10 + row * 18,       // Vertical spacing
+          vx: 0,
+          vy: 0
+        };
+      });
+      return positions;
+    }
 
-    // Initialize positions
+    // Category gravity centers for desktop cluster layout
+    const categoryCenters = {
+      'Frontend': { x: 30, y: 30 },
+      'Backend': { x: 70, y: 30 },
+      'Database': { x: 50, y: 50 },
+      'Tools & Platforms': { x: 30, y: 70 },
+      'Other': { x: 70, y: 70 },
+    };
+
+    // Initialize positions near their gravity centers
     skillsArray?.forEach((skill, index) => {
-      const angle = (index * 137.5) % 360; // Golden angle
-      const radius = Math.min(maxRadius, 10 + (index * 30 / skillsArray.length));
+      const angle = (index * 137.5) % 360;
+      const center = categoryCenters[skill.category] || { x: 50, y: 50 };
       
       positions[skill.id] = {
-        x: centerX + Math.cos(angle * Math.PI / 180) * radius,
-        y: centerY + Math.sin(angle * Math.PI / 180) * radius,
+        x: center.x + Math.cos(angle * Math.PI / 180) * 5,
+        y: center.y + Math.sin(angle * Math.PI / 180) * 5,
         vx: 0,
         vy: 0
       };
@@ -69,11 +91,13 @@ const SkillUniverse = ({
           const pos = positionsCopy[skill.id];
           if (!pos) return;
 
+          const center = categoryCenters[skill.category] || { x: 50, y: 50 };
+
           // Center attraction force
-          const dx = centerX - pos.x;
-          const dy = centerY - pos.y;
+          const dx = center.x - pos.x;
+          const dy = center.y - pos.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const force = 0.001 * distance;
+          const force = 0.002 * distance;
           
           pos.vx += force * dx / distance;
           pos.vy += force * dy / distance;
@@ -119,7 +143,7 @@ const SkillUniverse = ({
   useEffect(() => {
     if (skills.length === 0) return;
 
-    const newPositions = calculateNonOverlappingPositions(skills, selectedView);
+    const newPositions = calculateNonOverlappingPositions(skills, selectedView, isMobile);
     positionsRef.current = newPositions;
     setPlanetPositions(newPositions);
 
@@ -148,7 +172,7 @@ const SkillUniverse = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [skills, selectedView, calculateNonOverlappingPositions]);
+  }, [skills, selectedView, isMobile, calculateNonOverlappingPositions]);
 
   // Clean up animation on unmount
   useEffect(() => {
@@ -160,21 +184,21 @@ const SkillUniverse = ({
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-gradient-to-br from-background via-background to-primary/20">
+    <div className={`relative w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-background via-background to-primary/20 ${isMobile ? 'h-full custom-scrollbar' : 'h-full'}`}>
       {/* Animated Background */}
-      <div className="absolute inset-0">
-        {/* Stars - Updated for slow, elegant movement */}
-        {Array.from({ length: 150 })?.map((_, i) => {
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Stars - Fixed for slow, elegant, non-distracting movement */}
+        {Array.from({ length: 60 })?.map((_, i) => {
           // Generate random initial positions
           const initialX = Math.random() * 100;
           const initialY = Math.random() * 100;
           
           // Very slow, subtle movement parameters
-          const travelDistance = 1 + Math.random() * 2; // Very small distance
-          const travelAngle = Math.random() * Math.PI * 2; // Random direction
-          const travelSpeed = 0.2 + Math.random() * 0.3; // Very slow speed
-          const size = 0.5 + Math.random() * 1.5; // Varied star sizes
-          const opacity = 0.3 + Math.random() * 0.4; // Varied opacity
+          const travelDistance = 0.5 + Math.random() * 1; 
+          const travelAngle = Math.random() * Math.PI * 2; 
+          const duration = 20 + Math.random() * 20; // Long duration for slow movement
+          const size = 0.5 + Math.random() * 1.5; 
+          const opacity = 0.1 + Math.random() * 0.3; 
           
           return (
             <motion.div
@@ -190,22 +214,22 @@ const SkillUniverse = ({
               animate={{
                 x: [
                   0,
-                  Math.cos(travelAngle) * travelDistance,
-                  Math.cos(travelAngle) * travelDistance * 2,
+                  Math.cos(travelAngle) * travelDistance * 10,
+                  Math.cos(travelAngle) * travelDistance * 20,
                   0
                 ],
                 y: [
                   0,
-                  Math.sin(travelAngle) * travelDistance,
-                  Math.sin(travelAngle) * travelDistance * 2,
+                  Math.sin(travelAngle) * travelDistance * 10,
+                  Math.sin(travelAngle) * travelDistance * 20,
                   0
                 ],
                 opacity: [opacity, opacity * 1.5, opacity * 1.5, opacity],
               }}
               transition={{
-                duration: 100 / travelSpeed, // Very long duration for slow movement
+                duration: duration, 
                 repeat: Infinity,
-                ease: "linear",
+                ease: "easeInOut",
                 times: [0, 0.3, 0.7, 1]
               }}
             />
@@ -213,7 +237,7 @@ const SkillUniverse = ({
         })}
 
         {/* Nebula Effect */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-accent/30 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-radial from-success/20 to-transparent rounded-full blur-3xl"></div>
         </div>
@@ -222,27 +246,30 @@ const SkillUniverse = ({
       {/* Universe Container */}
       <motion.div
         ref={universeRef}
-        className="relative w-full h-full"
-        animate={{ rotate: universeRotation }}
-        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+        className="relative w-full"
+        style={{ minHeight: isMobile ? '120%' : '100%' }}
+        animate={{ rotate: isMobile ? 0 : [0, 360] }}
+        transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
       >
-        {/* Central Core */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <motion.div
-            className="w-16 h-16 bg-gradient-to-br from-accent via-success to-warning rounded-full shadow-2xl"
-            animate={{
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              scale: { duration: 3, repeat: Infinity },
-            }}
-            style={{
-              boxShadow: '0 0 60px rgba(0, 245, 255, 0.5)'
-            }}
-          >
-            <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-transparent rounded-full"></div>
-          </motion.div>
-        </div>
+        {/* Central Core (Hidden on mobile) */}
+        {!isMobile && (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <motion.div
+              className="w-16 h-16 bg-gradient-to-br from-accent via-success to-warning rounded-full shadow-2xl"
+              animate={{
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              }}
+              style={{
+                boxShadow: '0 0 40px rgba(0, 245, 255, 0.3)'
+              }}
+            >
+              <div className="absolute inset-2 bg-gradient-to-br from-white/20 to-transparent rounded-full"></div>
+            </motion.div>
+          </div>
+        )}
 
         {/* Skill Planets */}
         {skills?.map((skill) => (
@@ -255,21 +282,22 @@ const SkillUniverse = ({
             isHovered={hoveredSkill?.id === skill?.id}
             onSelect={onSkillSelect}
             onHover={onSkillHover}
+            isMobile={isMobile}
           />
         ))}
 
-        {/* Orbital Rings */}
-        {[20, 35, 50]?.map((radius, index) => (
+        {/* Orbital Rings (Hidden on mobile) */}
+        {!isMobile && [20, 35, 50]?.map((radius, index) => (
           <motion.div
             key={index}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-white/10 rounded-full"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-white/5 rounded-full pointer-events-none"
             style={{
               width: `${radius * 2}%`,
               height: `${radius * 2}%`,
             }}
             animate={{ rotate: 360 }}
             transition={{
-              duration: 60 + index * 20,
+              duration: 120 + index * 40,
               repeat: Infinity,
               ease: "linear"
             }}
@@ -278,14 +306,16 @@ const SkillUniverse = ({
       </motion.div>
       
       {/* Skill Tooltip */}
-      <SkillTooltip
-        skill={hoveredSkill}
-        position={mousePosition}
-        isVisible={!!hoveredSkill}
-      />
+      {!isMobile && (
+        <SkillTooltip
+          skill={hoveredSkill}
+          position={mousePosition}
+          isVisible={!!hoveredSkill}
+        />
+      )}
       
       {/* View Indicator */}
-      <div className="absolute top-4 left-4 glass-card px-4 py-2">
+      <div className="absolute top-4 left-4 glass-card px-4 py-2 z-10">
         <div className="text-sm font-medium text-foreground">
           {selectedView === 'all' ? 'Complete Universe' :
            selectedView === 'fullstack' ? 'Full Stack Galaxy' :
@@ -299,16 +329,18 @@ const SkillUniverse = ({
       </div>
       
       {/* Navigation Hint */}
-      <motion.div
-        className="absolute bottom-4 right-4 glass-card px-4 py-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.5 }}
-      >
-        <div className="text-xs text-muted-foreground">
-          🖱️ Hover to explore • 🖱️ Click for details
-        </div>
-      </motion.div>
+      {!isMobile && (
+        <motion.div
+          className="absolute bottom-4 right-4 glass-card px-4 py-2 z-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.5 }}
+        >
+          <div className="text-xs text-muted-foreground">
+            🖱️ Hover to explore • 🖱️ Click for details
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 };

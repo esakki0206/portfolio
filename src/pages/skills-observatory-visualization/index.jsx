@@ -21,7 +21,7 @@ const SkillsObservatoryVisualization = () => {
     {
       id: 'react',
       name: 'React',
-      category: 'Frameworks',
+      category: 'Frontend',
       proficiency: 82,
       recentActivity: 90,
       experience: 'Used in production internship at Free Will Technologies',
@@ -41,14 +41,14 @@ const SkillsObservatoryVisualization = () => {
     {
       id: 'javascript',
       name: 'JavaScript',
-      category: 'Programming Languages',
+      category: 'Frontend',
       proficiency: 78,
       recentActivity: 85,
-      experience: 'Primary language for full-stack web development',
+      experience: 'Primary language for frontend web development',
       icon: 'Code2',
       color: 'from-yellow-500 to-orange-400',
       description:
-        'Used JavaScript extensively in React projects and Node.js backends. Comfortable with ES6+, async/await, and DOM manipulation.',
+        'Used JavaScript extensively in React projects. Comfortable with ES6+, async/await, and DOM manipulation.',
       certifications: [],
       projects: ['Resume Builder', 'Portfolio Website'],
       resources: ['MDN Web Docs', 'javascript.info'],
@@ -59,29 +59,9 @@ const SkillsObservatoryVisualization = () => {
       ],
     },
     {
-      id: 'python',
-      name: 'Python',
-      category: 'Programming Languages',
-      proficiency: 80,
-      recentActivity: 75,
-      experience: 'First language learned; used in ML coursework',
-      icon: 'Code',
-      color: 'from-green-500 to-emerald-400',
-      description:
-        'Started coding in Python. Used it for algorithms coursework, data analysis, and building the CIFAR-10 CNN image classifier.',
-      certifications: [],
-      projects: ['CIFAR-10 CNN Classifier', 'Algorithm Implementations'],
-      resources: ['Python.org', 'Real Python'],
-      satellites: [
-        { name: 'NumPy', proficiency: 72 },
-        { name: 'Pandas', proficiency: 68 },
-        { name: 'Matplotlib', proficiency: 70 },
-      ],
-    },
-    {
       id: 'php',
       name: 'PHP',
-      category: 'Frameworks',
+      category: 'Backend',
       proficiency: 70,
       recentActivity: 80,
       experience: 'Used at Free Will Technologies internship for backend APIs',
@@ -101,7 +81,7 @@ const SkillsObservatoryVisualization = () => {
     {
       id: 'mysql',
       name: 'MySQL',
-      category: 'Databases',
+      category: 'Database',
       proficiency: 72,
       recentActivity: 75,
       experience: 'Used in internship and Database Systems coursework',
@@ -119,9 +99,49 @@ const SkillsObservatoryVisualization = () => {
       ],
     },
     {
+      id: 'git',
+      name: 'Git',
+      category: 'Tools & Platforms',
+      proficiency: 75,
+      recentActivity: 90,
+      experience: 'Daily version control across all projects',
+      icon: 'GitBranch',
+      color: 'from-orange-500 to-red-400',
+      description:
+        'Use Git daily for version control. Comfortable with branching, rebasing, pull requests, and collaborative workflows on GitHub.',
+      certifications: [],
+      projects: ['All Projects'],
+      resources: ['Pro Git Book', 'GitHub Docs'],
+      satellites: [
+        { name: 'GitHub', proficiency: 80 },
+        { name: 'Branching', proficiency: 75 },
+        { name: 'Pull Requests', proficiency: 72 },
+      ],
+    },
+    {
+      id: 'python',
+      name: 'Python',
+      category: 'Other',
+      proficiency: 80,
+      recentActivity: 75,
+      experience: 'First language learned; used in ML coursework',
+      icon: 'Code',
+      color: 'from-green-500 to-emerald-400',
+      description:
+        'Started coding in Python. Used it for algorithms coursework, data analysis, and building the CIFAR-10 CNN image classifier.',
+      certifications: [],
+      projects: ['CIFAR-10 CNN Classifier', 'Algorithm Implementations'],
+      resources: ['Python.org', 'Real Python'],
+      satellites: [
+        { name: 'NumPy', proficiency: 72 },
+        { name: 'Pandas', proficiency: 68 },
+        { name: 'Matplotlib', proficiency: 70 },
+      ],
+    },
+    {
       id: 'tensorflow',
       name: 'TensorFlow',
-      category: 'Emerging Tech',
+      category: 'Other',
       proficiency: 65,
       recentActivity: 85,
       experience: 'Used in ML coursework to build CIFAR-10 CNN',
@@ -141,7 +161,7 @@ const SkillsObservatoryVisualization = () => {
     {
       id: 'arduino',
       name: 'Arduino / C++',
-      category: 'Emerging Tech',
+      category: 'Other',
       proficiency: 60,
       recentActivity: 70,
       experience: 'Built Budget-Friendly CCTV prototype at Innovathon',
@@ -159,49 +179,9 @@ const SkillsObservatoryVisualization = () => {
       ],
     },
     {
-      id: 'git',
-      name: 'Git',
-      category: 'Tools',
-      proficiency: 75,
-      recentActivity: 90,
-      experience: 'Daily version control across all projects',
-      icon: 'GitBranch',
-      color: 'from-orange-500 to-red-400',
-      description:
-        'Use Git daily for version control. Comfortable with branching, rebasing, pull requests, and collaborative workflows on GitHub.',
-      certifications: [],
-      projects: ['All Projects'],
-      resources: ['Pro Git Book', 'GitHub Docs'],
-      satellites: [
-        { name: 'GitHub', proficiency: 80 },
-        { name: 'Branching', proficiency: 75 },
-        { name: 'Pull Requests', proficiency: 72 },
-      ],
-    },
-    {
-      id: 'nodejs',
-      name: 'Node.js',
-      category: 'Frameworks',
-      proficiency: 60,
-      recentActivity: 60,
-      experience: 'Learning for backend development alongside PHP',
-      icon: 'Server',
-      color: 'from-green-600 to-lime-400',
-      description:
-        'Exploring Node.js and Express for building REST APIs and server-side applications alongside PHP.',
-      certifications: [],
-      projects: ['Personal Projects'],
-      resources: ['Node.js Docs', 'Express.js Guide'],
-      satellites: [
-        { name: 'Express.js', proficiency: 58 },
-        { name: 'REST APIs', proficiency: 60 },
-        { name: 'npm', proficiency: 70 },
-      ],
-    },
-    {
       id: 'algorithms',
       name: 'Algorithms',
-      category: 'Computer Science',
+      category: 'Other',
       proficiency: 82,
       recentActivity: 80,
       experience: 'Core coursework — Merge Sort, BFS, DFS, Dijkstra, DP',
@@ -222,7 +202,7 @@ const SkillsObservatoryVisualization = () => {
 
   // Check mobile
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -238,10 +218,10 @@ const SkillsObservatoryVisualization = () => {
     const matchesView =
       selectedView === 'all' ||
       (selectedView === 'fullstack' &&
-        ['Programming Languages', 'Frameworks', 'Databases'].includes(skill.category)) ||
+        ['Frontend', 'Backend', 'Database'].includes(skill.category)) ||
       (selectedView === 'datascience' &&
         ['Python', 'TensorFlow', 'MySQL'].includes(skill.name)) ||
-      (selectedView === 'devops' && ['Tools'].includes(skill.category)) ||
+      (selectedView === 'devops' && ['Tools & Platforms'].includes(skill.category)) ||
       (selectedView === 'mobile' && ['JavaScript', 'React'].includes(skill.name));
 
     return matchesSearch && matchesCategory && matchesView;
@@ -320,6 +300,7 @@ const SkillsObservatoryVisualization = () => {
               hoveredSkill={hoveredSkill}
               onSkillHover={setHoveredSkill}
               selectedView={selectedView}
+              isMobile={isMobile}
             />
           </div>
 
