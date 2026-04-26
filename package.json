@@ -1,5 +1,5 @@
 {
-  "name": "codesphere-portfolio",
+  "name": "Esakkiappan-portfolio",
   "version": "0.1.0",
   "private": true,
   "rocketCritical": {
@@ -39,7 +39,6 @@
     "clsx": "^2.1.1",
     "d3": "^7.9.0",
     "date-fns": "^4.1.0",
-    "developer": "^1.0.0",
     "dotenv": "^16.0.1",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.484.0",
@@ -61,12 +60,6 @@
     "start": "vite",
     "build": "vite build --sourcemap",
     "serve": "vite preview"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

@@ -1,133 +1,108 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
 
 const ProjectCard = ({ project, onViewDetails, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const getComplexityColor = (level) => {
-    switch (level) {
-      case 'Beginner': return 'text-success bg-success/10 border-success/20';
-      case 'Intermediate': return 'text-warning bg-warning/10 border-warning/20';
-      case 'Advanced': return 'text-error bg-error/10 border-error/20';
-      default: return 'text-muted-foreground bg-muted/10 border-border';
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Live': return 'text-success';
-      case 'Development': return 'text-warning';
-      case 'Maintenance': return 'text-accent';
-      default: return 'text-muted-foreground';
-    }
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col h-full"
     >
-      <div className="glass-card p-6 h-full transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10 interactive-lift">
-        {/* Project Image */}
-        <div className="relative overflow-hidden rounded-lg mb-4 h-48 bg-muted/20">
+      <div className="glass-card flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-accent/20 border border-white/5 backdrop-blur-md">
+        
+        {/* Project Image Area */}
+        <div className="relative overflow-hidden h-56 bg-muted/20 border-b border-white/5">
           <Image
             src={project?.image}
             alt={project?.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           
-          {/* Overlay with metrics */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center"
-          >
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="space-y-1">
-                <div className="text-2xl font-bold text-accent">{project?.metrics?.linesOfCode}</div>
-                <div className="text-xs text-muted-foreground">Lines of Code</div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl font-bold text-success">{project?.metrics?.githubStars}</div>
-                <div className="text-xs text-muted-foreground">GitHub Stars</div>
-              </div>
-            </div>
-          </motion.div>
-
           {/* Status Badge */}
-          <div className="absolute top-3 right-3">
-            <div className={`flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium bg-background/80 backdrop-blur-sm ${getStatusColor(project?.status)}`}>
-              <div className={`w-2 h-2 rounded-full ${project?.status === 'Live' ? 'bg-success' : project?.status === 'Development' ? 'bg-warning' : 'bg-accent'}`}></div>
+          <div className="absolute top-3 right-3 z-10">
+            <div className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-background/80 backdrop-blur-md text-success shadow-lg border border-success/20">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+              </span>
               <span>{project?.status}</span>
             </div>
           </div>
+
+          {/* Hover Overlay Gradient (Subtle) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
         </div>
 
-        {/* Project Info */}
-        <div className="space-y-4">
-          <div>
+        {/* Content Area */}
+        <div className="p-6 flex flex-col flex-grow">
+          {/* Title & Description */}
+          <div className="mb-4">
             <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
               {project?.title}
             </h3>
-            <p className="text-muted-foreground text-sm line-clamp-3">
+            <p className="text-muted-foreground text-sm line-clamp-2">
               {project?.description}
             </p>
           </div>
 
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2">
+          {/* Key Features (Bullet Points) */}
+          <div className="mb-6 flex-grow">
+            <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3 flex items-center">
+              <Icon name="Sparkles" size={14} className="mr-1.5 text-accent" />
+              Key Features
+            </h4>
+            <ul className="space-y-2">
+              {project?.features?.slice(0, 3).map((feature, i) => (
+                <li key={i} className="flex items-start text-sm text-muted-foreground">
+                  <Icon name="CheckCircle2" size={16} className="mr-2 text-success shrink-0 mt-0.5" />
+                  <span className="line-clamp-2">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tech Stack Badges */}
+          <div className="flex flex-wrap gap-2 mb-6">
             {project?.techStack?.slice(0, 4)?.map((tech, techIndex) => (
               <span
                 key={techIndex}
-                className="px-2 py-1 text-xs font-medium bg-accent/10 text-accent rounded-md border border-accent/20"
+                className="px-2.5 py-1 text-xs font-medium bg-accent/10 text-accent rounded-md border border-accent/20"
               >
                 {tech}
               </span>
             ))}
             {project?.techStack?.length > 4 && (
-              <span className="px-2 py-1 text-xs font-medium bg-muted/20 text-muted-foreground rounded-md">
-                +{project?.techStack?.length - 4} more
+              <span className="px-2.5 py-1 text-xs font-medium bg-muted/30 text-muted-foreground rounded-md border border-white/5">
+                +{project?.techStack?.length - 4}
               </span>
             )}
           </div>
 
-          {/* Complexity & Collaboration */}
-          <div className="flex items-center justify-between">
-            <div className={`px-2 py-1 text-xs font-medium rounded-md border ${getComplexityColor(project?.complexity)}`}>
-              {project?.complexity}
-            </div>
-            <div className="flex items-center space-x-1 text-xs text-muted-foreground">
-              <Icon name="Users" size={14} />
-              <span>{project?.collaborationStatus}</span>
-            </div>
-          </div>
-
           {/* Action Buttons */}
-          <div className="flex space-x-2 pt-2">
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-4 border-t border-white/5">
+            {project?.demoUrl && (
+              <Button
+                variant="default"
+                size="sm"
+                onClick={() => window.open(project.demoUrl, '_blank')}
+                iconName="ExternalLink"
+                iconPosition="right"
+                className="flex-1 neon-glow-hover w-full"
+              >
+                Live Demo
+              </Button>
+            )}
             <Button
               variant="outline"
               size="sm"
-              onClick={() => window.open(project?.githubUrl, '_blank')}
-              iconName="Github"
-              iconPosition="left"
-              className="flex-1"
-            >
-              Code
-            </Button>
-            <Button
-              variant="default"
-              size="sm"
               onClick={() => onViewDetails(project)}
-              iconName="ExternalLink"
-              iconPosition="right"
-              className="flex-1 neon-glow-hover"
+              iconName="Info"
+              iconPosition="left"
+              className="flex-1 w-full hover:bg-white/5"
             >
               Details
             </Button>

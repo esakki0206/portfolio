@@ -17,9 +17,9 @@ const ProjectStats = ({ projects, filteredProjects }) => {
       color: 'text-success'
     },
     {
-      icon: 'Star',
-      label: 'GitHub Stars',
-      value: projects?.reduce((sum, project) => sum + parseInt(project?.metrics?.githubStars), 0),
+      icon: 'MonitorPlay',
+      label: 'Live Demos',
+      value: projects?.filter(p => p.demoUrl)?.length || 0,
       color: 'text-warning'
     },
     {
