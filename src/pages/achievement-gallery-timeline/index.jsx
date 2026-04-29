@@ -14,20 +14,155 @@ const AchievementGalleryTimeline = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedCards, setExpandedCards] = useState(new Set());
 
-  // Real achievements based on actual experience
+  // ── Real achievements — 100 % verified data ────────────────────────────
   const achievements = [
     {
       id: 1,
+      title: 'Intra-College Hackathon — 1st Place',
+      category: 'Competitions',
+      organization: "St. Joseph's College (Autonomous)",
+      date: '2024',
+      description:
+        'Won 1st place at the intra-college hackathon building a "Budget-Friendly CCTV" prototype using ESP32-CAM and Arduino IDE. Earned a ₹2,000 cash prize.',
+      skills: ['Arduino IDE', 'ESP32-CAM', 'C++', 'IoT', 'Wi-Fi Streaming', 'Rapid Prototyping'],
+      detailedDescription: `Worked in a team of four first-year students to design and build a low-cost surveillance prototype.
+
+Project highlights:
+• Programmed the ESP32-CAM module in C++ using the Arduino IDE
+• Implemented an MJPEG HTTP server for live browser-based video feed
+• Achieved a fully functional prototype under ₹500 in total component cost
+• Demonstrated how open-source hardware can democratise security technology
+• Won 1st place and ₹2,000 cash prize against multiple competing teams`,
+      impact: [
+        { value: '🥇', label: '1st Place' },
+        { value: '₹2,000', label: 'Cash Prize' },
+        { value: '< ₹500', label: 'Prototype Cost' },
+      ],
+    },
+    {
+      id: 15,
+      title: 'PITCHFEST Hackathon — Electro Plant X',
+      category: 'Competitions',
+      organization: "St. Joseph's College (Autonomous)",
+      date: '2024',
+      description:
+        'Built "Electro Plant X" at the PITCHFEST hackathon conducted in our college — an innovative IoT-based prototype combining embedded systems with real-world problem solving.',
+      skills: ['IoT', 'Embedded Systems', 'Prototyping', 'Teamwork', 'Presentation', 'Innovation'],
+      image: '/assets/images/ElectroPlant-X.jpeg',
+      detailedDescription: `Participated in PITCHFEST, an intra-college hackathon focused on innovative product ideas and live pitching.
+
+Project — Electro Plant X:
+• Designed and built an IoT-based prototype addressing real-world needs
+• Combined hardware prototyping with software integration
+• Delivered a live pitch to a panel of judges explaining the concept, prototype, and market potential
+• Gained valuable experience in rapid ideation, prototyping under time pressure, and public speaking
+• Strengthened teamwork and cross-functional collaboration skills`,
+      impact: [
+        { value: 'IoT', label: 'Domain' },
+        { value: 'PITCHFEST', label: 'Event' },
+        { value: 'Prototype', label: 'Delivered' },
+      ],
+    },
+    {
+      id: 16,
+      title: 'Financial Tech Hackathon — Participation',
+      category: 'Competitions',
+      organization: 'FinTech Hackathon',
+      date: '2024',
+      description:
+        'Participated in a Financial Technology hackathon, working on fintech solutions and gaining exposure to the intersection of finance and technology.',
+      skills: ['FinTech', 'Problem Solving', 'Teamwork', 'Rapid Prototyping', 'Presentation'],
+      certificateUrl: '/assets/FinTech.pdf',
+      detailedDescription: `Competed in a Financial Technology hackathon, exploring technology-driven solutions for the finance sector.
+
+Highlights:
+• Worked on building a technology solution for a fintech problem statement
+• Gained exposure to financial systems, payment processing concepts, and regulatory considerations
+• Collaborated with team members under strict time constraints
+• Received a certificate of participation for completing the hackathon`,
+      impact: [
+        { value: 'FinTech', label: 'Domain' },
+        { value: 'Hackathon', label: 'Event Type' },
+        { value: 'Certificate', label: 'Received' },
+      ],
+    },
+    {
+      id: 2,
+      title: '1st Prize — Technical Quiz, NACOTECH-2025',
+      category: 'Competitions',
+      organization: 'NACOTECH-2025 (Inter-College Event)',
+      date: '2025',
+      description:
+        'Secured 1st prize in the Technical Quiz at NACOTECH-2025, an inter-college technical symposium. Demonstrated strong knowledge across CS fundamentals, algorithms, and current technologies.',
+      skills: ['Computer Science', 'Algorithms', 'Problem Solving', 'Quick Recall', 'Teamwork'],
+      detailedDescription: `Competed against participants from multiple colleges in a timed technical quiz covering a broad range of Computer Science topics.
+
+Highlights:
+• Covered topics: data structures, algorithms, networking, DBMS, OS, and current tech trends
+• Multi-round format with elimination rounds testing depth and speed
+• Won 1st prize, demonstrating consistent accuracy and fast recall under pressure
+• Represented St. Joseph's College at an inter-college level`,
+      impact: [
+        { value: '🥇', label: '1st Prize' },
+        { value: 'Inter-College', label: 'Level' },
+        { value: 'CS Fundamentals', label: 'Domain' },
+      ],
+    },
+    {
+      id: 3,
+      title: '2nd Prize — Python Debugging, SRM Symposium',
+      category: 'Competitions',
+      organization: 'SRM Technical Symposium',
+      date: '2025',
+      description:
+        'Secured 2nd prize in the Python Debugging competition at SRM Technical Symposium. Identified and fixed complex bugs in Python code under strict time constraints.',
+      skills: ['Python', 'Debugging', 'Problem Solving', 'Code Analysis', 'Time Management'],
+      detailedDescription: `Participated in a competitive Python debugging challenge at SRM's annual technical symposium.
+
+Highlights:
+• Given buggy Python scripts with logical errors, syntax issues, and edge-case failures
+• Required to identify root causes and apply correct fixes within strict time limits
+• Demonstrated strong understanding of Python internals, scoping, and common pitfalls
+• Secured 2nd prize against a competitive field of participants from multiple institutions`,
+      impact: [
+        { value: '🥈', label: '2nd Prize' },
+        { value: 'Python', label: 'Language' },
+        { value: 'SRM', label: 'Institution' },
+      ],
+    },
+    {
+      id: 4,
+      title: '1st Rank Holder — Semesters 1 to 5',
+      category: 'Academic Excellence',
+      organization: "St. Joseph's College (Autonomous)",
+      date: '2023 – Present',
+      description:
+        'Consistently secured 1st rank across all five semesters of B.Sc. Computer Science with an 8.5 GPA. Earned ₹1,000 in rank prizes and academic merit certificates.',
+      skills: ['Data Structures', 'Algorithms', 'Database Systems', 'Machine Learning', 'Computer Networks', 'Numerical Methods'],
+      detailedDescription: `Maintained the highest academic standing throughout my university career at St. Joseph's College (Autonomous).
+
+Achievements:
+• 1st Rank in Semester 1 through Semester 5 — consistent topper
+• Cumulative GPA: 8.5
+• Earned ₹1,000 total in rank prizes + merit certificates each semester
+• Key coursework: Data Structures, Algorithms, DBMS, Machine Learning, Computer Networks, Python Programming
+• Balanced academic excellence with internship work, hackathons, and personal projects`,
+      impact: [
+        { value: '1st', label: 'Rank (All 5 Sem)' },
+        { value: '8.5', label: 'GPA' },
+        { value: '₹1,000', label: 'Rank Prizes' },
+      ],
+    },
+    {
+      id: 5,
       title: 'Full-Stack Internship — Free Will Technologies',
       category: 'Experience',
       organization: 'Free Will Technologies',
-      date: 'Spring 2024',
+      date: '2024',
       description:
-        'Completed a full-stack internship at Free Will Technologies, building a production web-based Resume Builder using React, PHP, and MySQL. The application is live at resumebuilder.freewilltech.in.',
+        'Completed a full-stack development internship, building a production Resume Builder web app using React, PHP, and MySQL. The application is live at resumebuilder.freewilltech.in.',
       skills: ['React', 'PHP', 'MySQL', 'REST API', 'Responsive Design', 'Full-Stack'],
-      image:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=400&fit=crop',
-      detailedDescription: `During this internship at Free Will Technologies (a growing startup focused on business automation tools), I single-handedly developed a web-based Resume Builder application that is now in live production.
+      detailedDescription: `Internship at Free Will Technologies (a startup focused on business automation tools). Worked as a junior full-stack developer.
 
 Key responsibilities:
 • Designed and built a responsive React frontend with live resume preview
@@ -45,127 +180,172 @@ Outcome: The Resume Builder is live at resumebuilder.freewilltech.in and used by
       ],
     },
     {
-      id: 2,
-      title: 'Innovathon — Budget-Friendly CCTV Prototype',
-      category: 'Competitions',
-      organization: "St. Joseph's College Innovathon",
-      date: 'Summer 2024',
+      id: 6,
+      title: 'Python for Data Science — NPTEL Certification',
+      category: 'Certifications',
+      organization: 'NPTEL (IIT)',
+      date: '2024',
       description:
-        "Participated in a university Innovathon and built a Budget-Friendly CCTV prototype using ESP32-CAM and the Arduino IDE. Delivered a working hardware prototype that streams live video over Wi-Fi for under ₹500.",
-      skills: ['Arduino IDE', 'ESP32-CAM', 'C++', 'IoT', 'Wi-Fi Streaming', 'Rapid Prototyping'],
-      image:
-        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop',
-      detailedDescription: `Worked in a team of four first-year students to design and build a low-cost surveillance prototype for the university Innovathon.
+        'Completed the "Python for Data Science" certification from NPTEL, strengthening skills in Python for data analysis, visualisation, and scientific computing.',
+      skills: ['Python', 'Data Science', 'NumPy', 'Pandas', 'Data Analysis'],
+      certificateUrl: '/assets/Python for Data Science.pdf',
+      detailedDescription: `Earned a certified credential from NPTEL (National Programme on Technology Enhanced Learning), run by IITs.
 
-Project highlights:
-• Programmed the ESP32-CAM module in C++ using the Arduino IDE
-• Implemented an MJPEG HTTP server so the live feed could be viewed on any browser
-• Achieved a fully functional prototype with Wi-Fi auto-reconnect for under ₹500 in components
-• Presented to a panel of faculty judges; received commendation for practical innovation
-• Demonstrated how open-source hardware can democratise security technology
-
-This was my first hands-on hardware project and it sparked a strong interest in IoT and embedded systems.`,
+Course covered:
+• Python fundamentals for scientific computing
+• NumPy arrays and vectorised operations
+• Pandas DataFrames for data wrangling
+• Data visualisation with Matplotlib
+• Practical exercises and proctored exam`,
       impact: [
-        { value: '< ₹500', label: 'Total Cost' },
-        { value: 'Live', label: 'Video Stream' },
-        { value: 'IoT', label: 'Domain' },
+        { value: 'NPTEL', label: 'Platform' },
+        { value: 'Python', label: 'Language' },
+        { value: 'Certified', label: 'Status' },
       ],
     },
     {
-      id: 3,
-      title: 'Academic Excellence — 8.5 GPA',
-      category: 'Academic Excellence',
-      organization: "St. Joseph's College (Autonomous)",
-      date: '2023 – Present',
+      id: 7,
+      title: 'Programming in Java — NPTEL Certification',
+      category: 'Certifications',
+      organization: 'NPTEL (IIT)',
+      date: '2024',
       description:
-        'Maintaining an 8.5 GPA while pursuing a B.Sc. Computer Science degree and simultaneously working on internships, hackathons, and personal projects.',
-      skills: [
-        'Data Structures',
-        'Algorithms',
-        'Database Systems',
-        'Machine Learning',
-        'Computer Networks',
-        'Numerical Methods',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=400&fit=crop',
-      detailedDescription: `Pursuing a B.Sc. Computer Science degree at St. Joseph's College (Autonomous) with a consistent GPA of 8.5.
+        'Completed the "Programming in Java" certification from NPTEL, covering OOP principles, collections, multithreading, and application development.',
+      skills: ['Java', 'OOP', 'Collections', 'Multithreading', 'Exception Handling'],
+      detailedDescription: `Earned a certified credential from NPTEL covering Java programming in depth.
 
-Key coursework completed:
-• Data Structures and Algorithms — implemented Merge Sort, Quick Sort, BFS, DFS, Dijkstra's
-• Database Systems — designed and normalised an e-commerce database; improved query performance by 40% via indexing
-• Numerical Methods — applied iterative solvers and interpolation methods
-• Python Programming — built automation scripts and data analysis pipelines
-• Machine Learning (ongoing) — training CNNs, implementing regression and classification models
-
-Beyond academics, I balance studies with real-world projects and collaborative work, which has strengthened both my technical and time-management skills.`,
+Course covered:
+• Object-oriented programming: classes, inheritance, polymorphism, abstraction
+• Java Collections Framework: Lists, Maps, Sets
+• Exception handling and file I/O
+• Multithreading and concurrency basics
+• Practical assignments and proctored exam`,
       impact: [
-        { value: '8.5', label: 'GPA' },
-        { value: 'B.Sc. CS', label: 'Degree' },
-        { value: '2023–Now', label: 'Duration' },
+        { value: 'NPTEL', label: 'Platform' },
+        { value: 'Java', label: 'Language' },
+        { value: 'Certified', label: 'Status' },
       ],
     },
     {
-      id: 4,
+      id: 8,
+      title: 'Data Science for Engineers — NPTEL Certification',
+      category: 'Certifications',
+      organization: 'NPTEL (IIT)',
+      date: '2024',
+      description:
+        'Completed "Data Science for Engineers" from NPTEL, covering statistics, probability, regression, classification, and machine learning fundamentals.',
+      skills: ['Data Science', 'Statistics', 'Probability', 'Regression', 'Classification', 'Python'],
+      certificateUrl: '/assets/Data science Certification.pdf',
+      detailedDescription: `Earned a certified credential from NPTEL focused on data science fundamentals for engineering students.
+
+Course covered:
+• Probability and statistics fundamentals
+• Linear regression and logistic regression
+• Classification algorithms and model evaluation
+• Dimensionality reduction techniques
+• Hands-on exercises with real datasets`,
+      impact: [
+        { value: 'NPTEL', label: 'Platform' },
+        { value: 'Data Science', label: 'Domain' },
+        { value: 'Certified', label: 'Status' },
+      ],
+    },
+    {
+      id: 9,
+      title: 'Project Management: Running the Project — Coursera',
+      category: 'Certifications',
+      organization: 'Coursera',
+      date: '2024',
+      description:
+        'Completed "Project Management: Running the Project" on Coursera, learning structured project delivery, risk management, and stakeholder communication.',
+      skills: ['Project Management', 'Risk Management', 'Agile', 'Stakeholder Communication', 'Planning'],
+      certificateUrl: '/assets/project mgmt new.pdf',
+      detailedDescription: `Earned a certified credential from Coursera focused on project execution and delivery.
+
+Course covered:
+• Project planning and scheduling
+• Risk identification and mitigation strategies
+• Stakeholder management and communication
+• Monitoring project progress and quality
+• Agile and traditional project management approaches`,
+      impact: [
+        { value: 'Coursera', label: 'Platform' },
+        { value: 'PM', label: 'Domain' },
+        { value: 'Certified', label: 'Status' },
+      ],
+    },
+    {
+      id: 17,
+      title: 'Data Analysis using Python — Certification',
+      category: 'Certifications',
+      organization: 'Online Certification',
+      date: '2024',
+      description:
+        'Completed "Data Analysis using Python" certification, covering data wrangling with Pandas, exploratory data analysis, and data-driven decision making.',
+      skills: ['Python', 'Pandas', 'Data Analysis', 'Data Wrangling', 'Visualisation'],
+      certificateUrl: '/assets/Data analyze using py.pdf',
+      detailedDescription: `Earned a certified credential focused on practical data analysis workflows using Python.
+
+Course covered:
+• Data loading, cleaning, and preprocessing with Pandas
+• Exploratory data analysis (EDA) techniques
+• Statistical summaries and aggregation
+• Data visualisation for insights and reporting
+• Real-world datasets and hands-on exercises`,
+      impact: [
+        { value: 'Python', label: 'Language' },
+        { value: 'Data Analysis', label: 'Domain' },
+        { value: 'Certified', label: 'Status' },
+      ],
+    },
+    {
+      id: 10,
       title: 'CIFAR-10 CNN — 94% Test Accuracy',
       category: 'Projects',
       organization: "St. Joseph's College — ML Coursework",
-      date: 'Fall 2024',
+      date: '2024',
       description:
-        'Built a Convolutional Neural Network in TensorFlow/Keras that achieved 94% test accuracy on the CIFAR-10 benchmark, using data augmentation, batch normalisation, and dropout regularisation.',
+        'Built a Convolutional Neural Network in TensorFlow/Keras achieving 94% test accuracy on CIFAR-10, using data augmentation, batch normalisation, and dropout.',
       skills: ['Python', 'TensorFlow', 'Keras', 'CNNs', 'Data Augmentation', 'NumPy'],
-      image:
-        'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
-      detailedDescription: `Designed and trained a multi-layer CNN as part of advanced Machine Learning coursework.
+      detailedDescription: `Designed and trained a multi-layer CNN as part of advanced ML coursework.
 
-Architecture highlights:
+Architecture:
 • Two convolutional blocks (Conv2D → BatchNorm → MaxPool → Dropout)
 • Dense classifier with 512 units and 50% dropout
-• Data augmentation: random horizontal flips, width/height shifts, brightness variation
-• Adam optimiser with a cosine-decay learning rate schedule
-• Trained for 50 epochs on a CPU-GPU split
+• Data augmentation: random flips, shifts, brightness variation
+• Adam optimiser with cosine-decay learning rate schedule
 
 Results:
 • Training accuracy: 97.2%
-• Test accuracy:     94.0%
-• Training time:     ~45 minutes on GPU
-
-Visualisations included per-class confusion matrix and sample misclassified images to understand model weaknesses.`,
+• Test accuracy: 94.0%
+• Visualisations: per-class confusion matrix and sample misclassified images`,
       impact: [
         { value: '94%', label: 'Test Accuracy' },
-        { value: '10', label: 'Classes' },
+        { value: '60K', label: 'Training Images' },
         { value: 'TensorFlow', label: 'Framework' },
       ],
     },
     {
-      id: 5,
+      id: 11,
       title: 'High School Academic Excellence — 80%',
       category: 'Academic Excellence',
       organization: 'High School',
-      date: '2008 – 2023',
+      date: '2023',
       description:
-        'Graduated high school with an 80% aggregate, finishing in the top 10% of the class. Specialised in STEM subjects and had early exposure to programming and computer science.',
+        'Graduated high school with 80% aggregate, top 10% of the class. Scored 92% in Computer Science, building early foundations in programming and algorithms.',
       skills: ['Mathematics', 'Physics', 'Computer Science', 'STEM', 'Problem Solving'],
-      image:
-        'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=400&fit=crop',
-      detailedDescription: `Completed secondary and higher secondary education with a strong focus on STEM disciplines.
+      detailedDescription: `Completed secondary and higher secondary education with a strong STEM focus.
 
-Academic highlights:
+Highlights:
 • 80% aggregate — top 10% of graduating class
-• Computer Science elective: scored 92% — first introduction to programming logic and algorithms
-• Mathematics: scored 88% — strong foundation in algebra, calculus, and statistics
-• Physics: scored 85% — developed strong analytical reasoning skills
-
-Beyond academics:
-• Started self-teaching Python and HTML during free periods
-• Completed first "Hello, World!" in Python during this period — sparked a lifelong passion for coding
-• Participated in school-level science exhibitions
-
-This foundation directly enabled my smooth transition into a demanding Computer Science degree.`,
+• Computer Science elective: 92% — first introduction to programming
+• Mathematics: 88% — strong foundation in algebra and calculus
+• Started self-teaching Python during this period
+• Foundation that enabled smooth transition into a CS degree`,
       impact: [
         { value: '80%', label: 'Aggregate' },
-        { value: 'Top 10%', label: 'Rank' },
-        { value: 'Class of 2023', label: 'Graduation' },
+        { value: 'Top 10%', label: 'Class Rank' },
+        { value: '92%', label: 'CS Score' },
       ],
     },
   ];
@@ -186,6 +366,8 @@ This foundation directly enabled my smooth transition into a demanding Computer 
           ? 'Briefcase'
           : name === 'Competitions'
           ? 'Trophy'
+          : name === 'Certifications'
+          ? 'Award'
           : name === 'Projects'
           ? 'Code2'
           : 'Star',
@@ -239,7 +421,7 @@ This foundation directly enabled my smooth transition into a demanding Computer 
         <title>Achievements — Esakkiappan Portfolio</title>
         <meta
           name="description"
-          content="Real milestones: internship experience, hackathon participation, academic excellence, and project achievements."
+          content="Real milestones: hackathon wins, competition prizes, NPTEL & Coursera certifications, production internship, and consistent academic excellence."
         />
       </Helmet>
       <Header />
@@ -247,9 +429,9 @@ This foundation directly enabled my smooth transition into a demanding Computer 
       <main className="pt-16">
         {/* Hero */}
         <section className="relative py-20 px-6 lg:px-8 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card/20"></div>
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-success/10 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card/20" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-success/10 rounded-full blur-3xl" />
 
           <div className="relative max-w-7xl mx-auto text-center">
             <motion.div
@@ -258,14 +440,14 @@ This foundation directly enabled my smooth transition into a demanding Computer 
               transition={{ duration: 0.8 }}
             >
               <div className="flex items-center justify-center space-x-3 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Icon name="Trophy" size={32} className="text-white" />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <Icon name="Trophy" size={28} className="text-white" />
                 </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Icon name="Briefcase" size={32} className="text-white" />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <Icon name="Award" size={28} className="text-white" />
                 </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Icon name="Star" size={32} className="text-white" />
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <Icon name="Star" size={28} className="text-white" />
                 </div>
               </div>
 
@@ -275,10 +457,9 @@ This foundation directly enabled my smooth transition into a demanding Computer 
                 <span className="text-foreground">Milestones</span>
               </h1>
 
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-                Every entry here is earned, not fabricated — from my internship in production
-                development to hackathon hardware prototyping and academic excellence throughout
-                my Computer Science journey.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+                Every entry here is earned — from hackathon wins and inter-college prizes
+                to NPTEL certifications and a production internship. No fabrications, only real results.
               </p>
 
               <Button
@@ -306,7 +487,7 @@ This foundation directly enabled my smooth transition into a demanding Computer 
           </div>
         </section>
 
-        {/* Achievements Timeline */}
+        {/* Achievements Grid */}
         <section id="achievements-section" className="py-12 px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <FilterBar
@@ -321,48 +502,42 @@ This foundation directly enabled my smooth transition into a demanding Computer 
               filteredCount={filteredAchievements.length}
             />
 
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-success to-accent/20 hidden lg:block"></div>
-
-              {filteredAchievements.length > 0 ? (
-                <div className="space-y-0">
-                  {filteredAchievements.map((achievement, index) => (
-                    <AchievementCard
-                      key={achievement.id}
-                      achievement={achievement}
-                      index={index}
-                      isExpanded={expandedCards.has(achievement.id)}
-                      onToggle={() => toggleCardExpansion(achievement.id)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-center py-20"
+            {filteredAchievements.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {filteredAchievements.map((achievement, index) => (
+                  <AchievementCard
+                    key={achievement.id}
+                    achievement={achievement}
+                    index={index}
+                    isExpanded={expandedCards.has(achievement.id)}
+                    onToggle={() => toggleCardExpansion(achievement.id)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20"
+              >
+                <Icon name="Search" size={64} className="text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-foreground mb-2">No milestones found</h3>
+                <p className="text-muted-foreground mb-6">
+                  Try adjusting your search terms or filters.
+                </p>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSearchTerm('');
+                  }}
+                  iconName="RotateCcw"
+                  iconPosition="left"
                 >
-                  <Icon name="Search" size={64} className="text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    No milestones found
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Try adjusting your search terms or filters.
-                  </p>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedCategory('all');
-                      setSearchTerm('');
-                    }}
-                    iconName="RotateCcw"
-                    iconPosition="left"
-                  >
-                    Reset Filters
-                  </Button>
-                </motion.div>
-              )}
-            </div>
+                  Reset Filters
+                </Button>
+              </motion.div>
+            )}
           </div>
         </section>
 
@@ -378,7 +553,7 @@ This foundation directly enabled my smooth transition into a demanding Computer 
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                 Ready to <span className="text-gradient">Collaborate</span>?
               </h2>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 These milestones reflect my commitment to learning through doing. Let's discuss how
                 I can contribute to your next project.
               </p>
@@ -387,10 +562,7 @@ This foundation directly enabled my smooth transition into a demanding Computer 
                   variant="default"
                   size="lg"
                   onClick={() =>
-                    window.open(
-                      'https://www.linkedin.com/in/esakkiappan-e-b24893343',
-                      '_blank'
-                    )
+                    window.open('https://www.linkedin.com/in/esakkiappan-e-b24893343', '_blank')
                   }
                   iconName="Linkedin"
                   iconPosition="left"
@@ -424,14 +596,10 @@ This foundation directly enabled my smooth transition into a demanding Computer 
               </div>
               <span className="text-foreground font-semibold">Esakkiappan E</span>
             </div>
-
             <div className="flex items-center space-x-6">
               <button
                 onClick={() =>
-                  window.open(
-                    'https://www.linkedin.com/in/esakkiappan-e-b24893343',
-                    '_blank'
-                  )
+                  window.open('https://www.linkedin.com/in/esakkiappan-e-b24893343', '_blank')
                 }
                 className="text-muted-foreground hover:text-accent transition-colors duration-200"
                 aria-label="LinkedIn"
@@ -439,17 +607,21 @@ This foundation directly enabled my smooth transition into a demanding Computer 
                 <Icon name="Linkedin" size={20} />
               </button>
               <button
-                onClick={() =>
-                  window.open('mailto:esakkiappan@example.com', '_self')
-                }
+                onClick={() => window.open('mailto:esakki0720@gmail.com', '_self')}
                 className="text-muted-foreground hover:text-accent transition-colors duration-200"
                 aria-label="Email"
               >
                 <Icon name="Mail" size={20} />
               </button>
+              <button
+                onClick={() => window.open('https://github.com/Esakkiappan10', '_blank')}
+                className="text-muted-foreground hover:text-accent transition-colors duration-200"
+                aria-label="GitHub"
+              >
+                <Icon name="Github" size={20} />
+              </button>
             </div>
           </div>
-
           <div className="mt-8 pt-8 border-t border-border text-center">
             <p className="text-muted-foreground text-sm">
               © {new Date().getFullYear()} Esakkiappan E. Crafted with passion and precision.
