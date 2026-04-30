@@ -116,5 +116,22 @@ export const projectsData = [
       'Real-Time Data Display: Sensor data shown locally on an LCD and remotely via mobile app',
       'Energy Efficient Design: Continuous autonomous operation powered by a solar panel'
     ]
+  },
+  {
+    id: 8,
+    title: 'Holo Find X',
+    description: 'An Augmented Reality (AR) object tracking and finding application designed for indoor environments. Developed as a final year academic project.',
+    image: '/assets/images/holo.png',
+    category: 'Mobile & AR Development',
+    techStack: ['Kotlin', 'React Native', 'Android', 'AR'],
+    status: 'Completed',
+    githubUrl: null,
+    demoUrl: null,
+    features: [
+      'Indoor object tracking and spatial mapping using AR technology',
+      'Native Android integration with Kotlin and modern UI with React Native',
+      'Intuitive user interface for locating misplaced objects in real-time',
+      'Comprehensive final year project demonstrating mobile and AR capabilities'
+    ]
   }
 ];

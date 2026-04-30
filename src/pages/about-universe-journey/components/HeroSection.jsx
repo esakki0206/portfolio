@@ -159,7 +159,7 @@ const HeroSection = () => {
                   <div className="text-sm text-muted-foreground">GPA</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="text-2xl font-bold text-success">5+</div>
+                  <div className="text-2xl font-bold text-success">7+</div>
                   <div className="text-sm text-muted-foreground">Projects</div>
                 </div>
                 <div className="text-center lg:text-left">
@@ -267,18 +267,6 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="flex flex-col items-center space-y-2 text-muted-foreground">
-            <span className="text-sm">Scroll to explore</span>
-            <Icon name="ChevronDown" size={20} />
-          </div>
-        </motion.div>
       </section>
 
       {/* ─── What I Do + Strengths — separate section, normal flow ─── */}
@@ -295,7 +283,7 @@ const HeroSection = () => {
               {[
                 { icon: 'Globe', title: 'Full-Stack Web', desc: 'React · PHP · MySQL' },
                 { icon: 'Cpu', title: 'IoT Prototyping', desc: 'Arduino · ESP32-CAM' },
-                { icon: 'Brain', title: 'Machine Learning', desc: 'TensorFlow · CNN · Python' },
+                { icon: 'Brain', title: 'Machine Learning', desc: 'TensorFlow · Keras · Python' },
                 { icon: 'Award', title: 'Certifications', desc: 'NPTEL · Coursera' },
               ].map((item, i) => (
                 <motion.div

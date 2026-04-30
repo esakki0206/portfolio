@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       period: 'Fall 2024 – Present',
       icon: 'Award',
       preview: 'Earned 5 certified credentials in Python, Java, Data Science, Data Analysis, and Project Management from NPTEL & Coursera.',
-      fullDescription: `Pursued structured online learning alongside university coursework to deepen domain expertise. Completed "Python for Data Science", "Data Analysis using Python", and "Programming in Java" through NPTEL, building fluency in critical languages. Earned "Data Science for Engineers" (NPTEL) to strengthen analytical foundations, and "Project Management: Running the Project" (Coursera) to develop professional project delivery skills. Also excelled in advanced CS coursework — built a CNN in TensorFlow achieving 94% accuracy on CIFAR-10.`,
+      fullDescription: `Pursued structured online learning alongside university coursework to deepen domain expertise. Completed "Python for Data Science", "Data Analysis using Python", and "Programming in Java" through NPTEL, building fluency in critical languages. Earned "Data Science for Engineers" (NPTEL) to strengthen analytical foundations, and "Project Management: Running the Project" (Coursera) to develop professional project delivery skills.`,
       tags: ['NPTEL', 'Coursera', 'Python', 'Java', 'Data Science', 'Project Management'],
       media: {
         achievement: '5 Professional Certifications',
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         >
           {[
             { label: 'Years Coding', value: '3+', icon: 'Code2' },
-            { label: 'Projects Built', value: '5+', icon: 'FolderOpen' },
+            { label: 'Projects Built', value: '7+', icon: 'FolderOpen' },
             { label: 'Competitions', value: '5', icon: 'Trophy' },
             { label: 'Certifications', value: '5', icon: 'Award' }
           ].map((stat) => (

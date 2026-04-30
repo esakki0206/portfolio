@@ -3,43 +3,43 @@ import { motion } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
-const SkillFilters = ({ 
-  selectedView, 
-  onViewChange, 
-  searchTerm, 
+const SkillFilters = ({
+  selectedView,
+  onViewChange,
+  searchTerm,
   onSearchChange,
   selectedCategory,
   onCategoryChange,
   categories = [] // Ensure categories has a default value
 }) => {
   const presetViews = [
-    { 
-      id: 'all', 
-      label: 'All Skills', 
+    {
+      id: 'all',
+      label: 'All Skills',
       icon: 'Globe',
       description: 'Complete skill universe'
     },
-    { 
-      id: 'fullstack', 
-      label: 'Full Stack', 
+    {
+      id: 'fullstack',
+      label: 'Full Stack',
       icon: 'Layers',
       description: 'Web development stack'
     },
-    { 
-      id: 'datascience', 
-      label: 'Data Science', 
+    {
+      id: 'datascience',
+      label: 'Data Science',
       icon: 'BarChart3',
       description: 'AI & ML skills'
     },
-    { 
-      id: 'mobile', 
-      label: 'Mobile Dev', 
+    {
+      id: 'mobile',
+      label: 'Mobile Dev',
       icon: 'Smartphone',
       description: 'Mobile app development'
     },
-    { 
-      id: 'devops', 
-      label: 'DevOps', 
+    {
+      id: 'devops',
+      label: 'DevOps',
       icon: 'Settings',
       description: 'Infrastructure & deployment'
     }
@@ -57,28 +57,28 @@ const SkillFilters = ({
     <div className="space-y-6">
       {/* Search */}
       <div className="relative">
-        <Icon 
-          name="Search" 
-          size={20} 
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" 
+        <Icon
+          name="Search"
+          size={20}
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10"
         />
         <input
           type="text"
           placeholder="Search skills..."
           value={searchTerm || ''}
           onChange={(e) => onSearchChange(e?.target?.value)}
-          className="w-full pl-10 pr-4 py-3 bg-muted/20 border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
+          className="w-full pl-10 pr-4 py-3 bg-white/95 backdrop-blur-sm border border-white/20 rounded-lg text-gray-900 font-medium placeholder-gray-500 shadow-inner focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 relative z-0"
         />
         {searchTerm && (
           <button
             onClick={() => onSearchChange('')}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-800 transition-colors duration-200 z-10"
           >
             <Icon name="X" size={16} />
           </button>
         )}
       </div>
-      
+
       {/* Preset Views */}
       <div>
         <h3 className="text-sm font-semibold text-foreground mb-3">Skill Clusters</h3>
@@ -87,18 +87,16 @@ const SkillFilters = ({
             <motion.button
               key={view?.id}
               onClick={() => handleViewChange(view?.id)}
-              className={`p-4 rounded-lg border text-left transition-all duration-200 ${
-                selectedView === view?.id
-                  ? 'bg-accent/10 border-accent text-accent' 
+              className={`p-4 rounded-lg border text-left transition-all duration-200 ${selectedView === view?.id
+                  ? 'bg-accent/10 border-accent text-accent'
                   : 'bg-muted/20 border-border text-muted-foreground hover:text-foreground hover:bg-muted/30'
-              }`}
+                }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               <div className="flex items-center space-x-3">
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  selectedView === view?.id ? 'bg-accent text-background' : 'bg-muted text-muted-foreground'
-                }`}>
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${selectedView === view?.id ? 'bg-accent text-background' : 'bg-muted text-muted-foreground'
+                  }`}>
                   <Icon name={view?.icon} size={18} />
                 </div>
                 <div className="flex-1">
@@ -110,18 +108,17 @@ const SkillFilters = ({
           ))}
         </div>
       </div>
-      
+
       {/* Category Filter */}
       <div>
         <h3 className="text-sm font-semibold text-foreground mb-3">Categories</h3>
         <div className="space-y-1">
           <button
             onClick={() => onCategoryChange('all')}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${
-              selectedCategory === 'all' 
-                ? 'bg-accent/10 text-accent' 
+            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${selectedCategory === 'all'
+                ? 'bg-accent/10 text-accent'
                 : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'
-            }`}
+              }`}
           >
             All Categories
           </button>
@@ -129,48 +126,19 @@ const SkillFilters = ({
             <button
               key={category}
               onClick={() => onCategoryChange(category)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${
-                selectedCategory === category
-                  ? 'bg-accent/10 text-accent' 
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors duration-200 ${selectedCategory === category
+                  ? 'bg-accent/10 text-accent'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'
-              }`}
+                }`}
             >
               {category}
             </button>
           ))}
         </div>
       </div>
-      
-      {/* Quick Actions */}
-      <div className="pt-4 border-t border-border">
-        <h3 className="text-sm font-semibold text-foreground mb-3">Quick Actions</h3>
-        <div className="space-y-2">
-          <Button
-            variant="outline"
-            size="sm"
-            fullWidth
-            iconName="RotateCcw"
-            iconPosition="left"
-            onClick={() => {
-              handleViewChange('all');
-              onCategoryChange('all');
-              onSearchChange('');
-            }}
-          >
-            Reset Filters
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            fullWidth
-            iconName="Download"
-            iconPosition="left"
-          >
-            Export Skills
-          </Button>
-        </div>
-      </div>
-      
+
+
+
       {/* Legend */}
       <div className="pt-4 border-t border-border">
         <h3 className="text-sm font-semibold text-foreground mb-3">Legend</h3>

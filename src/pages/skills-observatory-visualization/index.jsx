@@ -32,6 +32,7 @@ const SkillsObservatoryVisualization = () => {
       certifications: [],
       projects: [
         'Resume Builder — Full-stack web app (Free Will Technologies internship)',
+        'Holo Find X — AR Object Tracking App (React Native)',
         'Portfolio Website — Interactive skills observatory with canvas animations',
         'Saree E-Commerce — Product catalogue with cart & checkout flow',
         'Online Book Shop — MERN stack bookstore with search & filtering',
@@ -149,10 +150,9 @@ const SkillsObservatoryVisualization = () => {
       icon: 'Code',
       color: 'from-green-500 to-emerald-400',
       description:
-        'First programming language — strong foundation in OOP, data structures, and algorithmic problem-solving. Used extensively for machine learning with TensorFlow/Keras, data analysis with Pandas/NumPy, and visualisation with Matplotlib/Seaborn. Built the CIFAR-10 CNN classifier achieving 94% accuracy. Comfortable with virtual environments, pip, and Jupyter notebooks.',
+        'First programming language — strong foundation in OOP, data structures, and algorithmic problem-solving. Used extensively for machine learning with TensorFlow/Keras, data analysis with Pandas/NumPy, and visualisation with Matplotlib/Seaborn. Comfortable with virtual environments, pip, and Jupyter notebooks.',
       certifications: ['Python for Data Science — NPTEL', 'Data Analysis using Python'],
       projects: [
-        'CIFAR-10 CNN Classifier — 94% accuracy image classification model',
         'Algorithm Implementations — Sorting, graph traversal, and DP solutions',
         'Data Analysis Projects — Pandas & Matplotlib-based EDA notebooks',
         'Automation Scripts — File processing & web scraping utilities',
@@ -170,21 +170,20 @@ const SkillsObservatoryVisualization = () => {
       category: 'Other',
       proficiency: 65,
       recentActivity: 85,
-      experience: '6+ months — ML coursework and hands-on CNN development with real-world datasets',
+      experience: '6+ months — ML coursework and hands-on neural network development with real-world datasets',
       icon: 'Brain',
       color: 'from-orange-600 to-red-400',
       description:
-        'Built and trained a Convolutional Neural Network achieving 94% test accuracy on the CIFAR-10 dataset (60,000 images, 10 classes). Applied data augmentation (random flipping, rotation, zoom), batch normalisation, dropout regularisation, and learning rate scheduling. Proficient with Keras Sequential and Functional APIs, model evaluation metrics, and TensorBoard visualisation.',
+        'Built and trained a Convolutional Neural Network. Applied data augmentation (random flipping, rotation, zoom), batch normalisation, dropout regularisation, and learning rate scheduling. Proficient with Keras Sequential and Functional APIs, model evaluation metrics, and TensorBoard visualisation.',
       certifications: ['Data Science for Engineers — NPTEL'],
       projects: [
-        'CIFAR-10 CNN Classifier — Multi-layer CNN with 94% accuracy',
         'Image Data Augmentation Pipeline — Custom preprocessing with tf.data',
         'Model Performance Analysis — Confusion matrices & training curves',
       ],
       resources: ['TensorFlow Official Docs', 'Deep Learning with Python (François Chollet)', 'Stanford CS231n Lectures', 'Kaggle Learn — Intro to Deep Learning'],
       satellites: [
         { name: 'Keras', proficiency: 68 },
-        { name: 'CNNs', proficiency: 65 },
+        { name: 'Neural Nets', proficiency: 65 },
         { name: 'Data Augmentation', proficiency: 62 },
       ],
     },
@@ -215,25 +214,67 @@ const SkillsObservatoryVisualization = () => {
       id: 'algorithms',
       name: 'Algorithms',
       category: 'Other',
-      proficiency: 82,
-      recentActivity: 80,
-      experience: '1.5+ years — core CS coursework covering sorting, graphs, dynamic programming, and complexity analysis',
+      proficiency: 55,
+      recentActivity: 60,
+      experience: '1.5+ years — core CS coursework covering basic data structures and introductory algorithms',
       icon: 'Network',
       color: 'from-purple-500 to-pink-400',
       description:
-        'Strong theoretical and practical foundation in algorithms and data structures from university coursework. Implemented and analysed time/space complexity of sorting algorithms (Merge Sort, Quick Sort, Heap Sort), graph algorithms (BFS, DFS, Dijkstra, Kruskal), and dynamic programming solutions (knapsack, LCS, matrix chain). Regular LeetCode practice for competitive problem-solving.',
+        'Basic theoretical foundation in algorithms and data structures from university coursework. Understand basic time/space complexity and introductory algorithms like sorting and searching. Familiar with fundamental data structures such as arrays, linked lists, and basic trees.',
       certifications: ['Programming in Java — NPTEL', '1st Rank Holder — Semesters 1-5'],
       projects: [
-        'Algorithm Implementations — 30+ algorithms coded from scratch in Python',
-        'Data Structures Lab — Linked lists, trees, heaps, hash tables',
-        'LeetCode Practice — 100+ problems solved across difficulty levels',
+        'Algorithm Implementations — Basic algorithms coded in Python',
+        'Data Structures Lab — Linked lists, trees, hash tables',
         'Complexity Analysis Reports — Big-O analysis for coursework assignments',
       ],
-      resources: ['CLRS (Introduction to Algorithms)', 'LeetCode', 'GeeksforGeeks', 'MIT OpenCourseWare 6.006'],
+      resources: ['CLRS (Introduction to Algorithms)', 'GeeksforGeeks', 'MIT OpenCourseWare 6.006'],
       satellites: [
-        { name: 'Sorting', proficiency: 85 },
-        { name: 'Graph Algos', proficiency: 80 },
-        { name: 'Dynamic Prog.', proficiency: 75 },
+        { name: 'Sorting', proficiency: 60 },
+        { name: 'Data Structures', proficiency: 55 },
+        { name: 'Basic Algos', proficiency: 50 },
+      ],
+    },
+    {
+      id: 'react-native',
+      name: 'React Native',
+      category: 'Mobile',
+      proficiency: 65,
+      recentActivity: 75,
+      experience: 'Normal level — Built final year AR project',
+      icon: 'Smartphone',
+      color: 'from-blue-400 to-cyan-300',
+      description:
+        'Solid foundation in cross-platform mobile development using React Native. Applied React concepts to mobile UI creation and state management. Integrated native Android functionality and AR tracking capabilities for the Holo Find X project.',
+      certifications: [],
+      projects: [
+        'Holo Find X — AR Object Tracking App (Final Year Project)',
+      ],
+      resources: ['React Native Docs', 'Expo Guides'],
+      satellites: [
+        { name: 'Mobile UI', proficiency: 70 },
+        { name: 'Cross-platform', proficiency: 65 },
+        { name: 'AR Integration', proficiency: 50 },
+      ],
+    },
+    {
+      id: 'kotlin',
+      name: 'Kotlin',
+      category: 'Mobile',
+      proficiency: 45,
+      recentActivity: 60,
+      experience: 'Basic level — Used for native Android integration in final year project',
+      icon: 'Smartphone',
+      color: 'from-purple-500 to-indigo-500',
+      description:
+        'Basic understanding of Kotlin for Android development. Utilised alongside React Native to build the Holo Find X AR tracking application, primarily for writing native modules and handling device-specific APIs.',
+      certifications: [],
+      projects: [
+        'Holo Find X — AR Object Tracking App (Final Year Project)',
+      ],
+      resources: ['Kotlin Docs', 'Android Developer Guides'],
+      satellites: [
+        { name: 'Android SDK', proficiency: 40 },
+        { name: 'Native Modules', proficiency: 45 },
       ],
     },
   ];
@@ -260,7 +301,7 @@ const SkillsObservatoryVisualization = () => {
       (selectedView === 'datascience' &&
         ['Python', 'TensorFlow', 'MySQL'].includes(skill.name)) ||
       (selectedView === 'devops' && ['Tools & Platforms'].includes(skill.category)) ||
-      (selectedView === 'mobile' && ['JavaScript', 'React'].includes(skill.name));
+      (selectedView === 'mobile' && ['JavaScript', 'React', 'React Native', 'Kotlin'].includes(skill.name));
 
     return matchesSearch && matchesCategory && matchesView;
   });
@@ -433,14 +474,12 @@ const SkillsObservatoryVisualization = () => {
                 { label: 'OOP & data structures', date: 'Oct 2024', value: 30 },
                 { label: 'Algorithms coursework', date: 'Feb 2025', value: 50 },
                 { label: 'ML & data analysis', date: 'Jun 2025', value: 65 },
-                { label: 'CIFAR-10 CNN project', date: 'Oct 2025', value: 76 },
                 { label: 'Current proficiency', date: 'Apr 2026', value: 80 },
               ],
               tensorflow: [
                 { label: 'ML fundamentals', date: 'May 2025', value: 10 },
                 { label: 'First Keras models', date: 'Jul 2025', value: 28 },
-                { label: 'CNN architecture study', date: 'Sep 2025', value: 45 },
-                { label: 'CIFAR-10 — 94% accuracy', date: 'Nov 2025', value: 60 },
+                { label: 'Neural Network study', date: 'Sep 2025', value: 45 },
                 { label: 'Current proficiency', date: 'Apr 2026', value: 65 },
               ],
               arduino: [
@@ -452,11 +491,22 @@ const SkillsObservatoryVisualization = () => {
               ],
               algorithms: [
                 { label: 'Basic sorting algorithms', date: 'Jun 2024', value: 15 },
-                { label: 'Recursion & divide-conquer', date: 'Oct 2024', value: 35 },
-                { label: 'Graph algorithms (BFS/DFS)', date: 'Feb 2025', value: 55 },
-                { label: 'Dynamic programming', date: 'Jun 2025', value: 70 },
-                { label: 'LeetCode practice (100+)', date: 'Nov 2025', value: 78 },
-                { label: 'Current proficiency', date: 'Apr 2026', value: 82 },
+                { label: 'Recursion & divide-conquer', date: 'Oct 2024', value: 30 },
+                { label: 'Graph algorithms (BFS/DFS)', date: 'Feb 2025', value: 45 },
+                { label: 'Data structures lab', date: 'Jun 2025', value: 50 },
+                { label: 'Current proficiency', date: 'Apr 2026', value: 55 },
+              ],
+              'react-native': [
+                { label: 'React concepts transition', date: 'Sep 2023', value: 20 },
+                { label: 'UI components', date: 'Nov 2023', value: 40 },
+                { label: 'AR integration', date: 'Feb 2024', value: 55 },
+                { label: 'Current proficiency', date: 'Apr 2026', value: 65 },
+              ],
+              kotlin: [
+                { label: 'Started basics', date: 'Oct 2023', value: 15 },
+                { label: 'First Android app', date: 'Jan 2024', value: 30 },
+                { label: 'Final year project prep', date: 'Mar 2024', value: 40 },
+                { label: 'Current proficiency', date: 'Apr 2026', value: 45 },
               ],
             }}
           />

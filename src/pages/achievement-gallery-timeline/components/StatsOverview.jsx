@@ -36,7 +36,7 @@ const StatsOverview = ({ achievements }) => {
     {
       icon: 'Globe',
       label: 'Live in Production',
-      value: liveProjects,
+      value: 5,
       color: 'from-cyan-500 to-blue-600',
       description: 'Real-world deployments',
     },
@@ -45,7 +45,7 @@ const StatsOverview = ({ achievements }) => {
       label: 'Internship',
       value: '1',
       color: 'from-violet-500 to-purple-600',
-      description: 'Free Will Technologies',
+      description: 'FrontierWox Tech',
     },
     {
       icon: 'Star',

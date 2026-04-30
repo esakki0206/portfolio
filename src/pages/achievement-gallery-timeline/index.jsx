@@ -10,8 +10,6 @@ import StatsOverview from './components/StatsOverview';
 
 const AchievementGalleryTimeline = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('date');
-  const [searchTerm, setSearchTerm] = useState('');
   const [expandedCards, setExpandedCards] = useState(new Set());
 
   // ── Real achievements — 100 % verified data ────────────────────────────
@@ -155,14 +153,14 @@ Achievements:
     },
     {
       id: 5,
-      title: 'Full-Stack Internship — Free Will Technologies',
+      title: 'Full-Stack Internship — FrontierWox Tech Private Limited',
       category: 'Experience',
-      organization: 'Free Will Technologies',
+      organization: 'FrontierWox Tech Private Limited',
       date: '2024',
       description:
-        'Completed a full-stack development internship, building a production Resume Builder web app using React, PHP, and MySQL. The application is live at resumebuilder.freewilltech.in.',
+        'Completed a full-stack development internship, building a production Resume Builder web app using React, PHP, and MySQL. The application is live at resumebuilder.frontierwox.in.',
       skills: ['React', 'PHP', 'MySQL', 'REST API', 'Responsive Design', 'Full-Stack'],
-      detailedDescription: `Internship at Free Will Technologies (a startup focused on business automation tools). Worked as a junior full-stack developer.
+      detailedDescription: `Internship at FrontierWoc Tech Private Limited (a startup focused on business automation tools). Worked as a junior full-stack developer.
 
 Key responsibilities:
 • Designed and built a responsive React frontend with live resume preview
@@ -171,8 +169,8 @@ Key responsibilities:
 • Participated in daily code reviews with senior developers
 • Deployed and maintained the application on the company server
 
-Outcome: The Resume Builder is live at resumebuilder.freewilltech.in and used by real users.`,
-      liveUrl: 'https://resumebuilder.freewilltech.in/',
+Outcome: The Resume Builder is live at resumebuilder.frontierwox.in and used by real users.`,
+      liveUrl: 'https://resumebuilder.frontierwox.in/',
       impact: [
         { value: 'Live', label: 'Production App' },
         { value: 'React', label: 'Frontend' },
@@ -300,29 +298,24 @@ Course covered:
     },
     {
       id: 10,
-      title: 'CIFAR-10 CNN — 94% Test Accuracy',
+      title: 'Holo Find X — Final Year Project',
       category: 'Projects',
-      organization: "St. Joseph's College — ML Coursework",
+      organization: "St. Joseph's College",
       date: '2024',
       description:
-        'Built a Convolutional Neural Network in TensorFlow/Keras achieving 94% test accuracy on CIFAR-10, using data augmentation, batch normalisation, and dropout.',
-      skills: ['Python', 'TensorFlow', 'Keras', 'CNNs', 'Data Augmentation', 'NumPy'],
-      detailedDescription: `Designed and trained a multi-layer CNN as part of advanced ML coursework.
+        'Developed Holo Find X, an Augmented Reality (AR) object tracking and finding application for indoor areas using Kotlin and React Native.',
+      skills: ['Kotlin', 'React Native', 'Android', 'Augmented Reality', 'Mobile Development'],
+      detailedDescription: `Developed an innovative Augmented Reality mobile application for indoor object tracking as my final year academic project.
 
-Architecture:
-• Two convolutional blocks (Conv2D → BatchNorm → MaxPool → Dropout)
-• Dense classifier with 512 units and 50% dropout
-• Data augmentation: random flips, shifts, brightness variation
-• Adam optimiser with cosine-decay learning rate schedule
-
-Results:
-• Training accuracy: 97.2%
-• Test accuracy: 94.0%
-• Visualisations: per-class confusion matrix and sample misclassified images`,
+Highlights:
+• Utilised Kotlin and React Native to build a robust, cross-platform capable Android application
+• Implemented AR features to map indoor spaces and track specific objects in real-time
+• Solved the real-world problem of finding misplaced items indoors
+• Successfully presented and defended as the culminating project of my degree`,
       impact: [
-        { value: '94%', label: 'Test Accuracy' },
-        { value: '60K', label: 'Training Images' },
-        { value: 'TensorFlow', label: 'Framework' },
+        { value: 'AR', label: 'Technology' },
+        { value: 'Final Year', label: 'Project' },
+        { value: 'Android', label: 'Platform' },
       ],
     },
     {
@@ -363,14 +356,14 @@ Highlights:
         name === 'Academic Excellence'
           ? 'GraduationCap'
           : name === 'Experience'
-          ? 'Briefcase'
-          : name === 'Competitions'
-          ? 'Trophy'
-          : name === 'Certifications'
-          ? 'Award'
-          : name === 'Projects'
-          ? 'Code2'
-          : 'Star',
+            ? 'Briefcase'
+            : name === 'Competitions'
+              ? 'Trophy'
+              : name === 'Certifications'
+                ? 'Award'
+                : name === 'Projects'
+                  ? 'Code2'
+                  : 'Star',
     }));
   }, [achievements]);
 
@@ -382,26 +375,11 @@ Highlights:
       filtered = filtered.filter((a) => a.category === selectedCategory);
     }
 
-    if (searchTerm) {
-      const lower = searchTerm.toLowerCase();
-      filtered = filtered.filter(
-        (a) =>
-          a.title.toLowerCase().includes(lower) ||
-          a.description.toLowerCase().includes(lower) ||
-          a.organization.toLowerCase().includes(lower) ||
-          (a.skills && a.skills.some((s) => s.toLowerCase().includes(lower)))
-      );
-    }
-
-    filtered.sort((a, b) => {
-      if (sortBy === 'date') return new Date(b.date) - new Date(a.date);
-      if (sortBy === 'category') return a.category.localeCompare(b.category);
-      if (sortBy === 'title') return a.title.localeCompare(b.title);
-      return 0;
-    });
+    // Sort by date by default (descending)
+    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return filtered;
-  }, [achievements, selectedCategory, searchTerm, sortBy]);
+  }, [achievements, selectedCategory]);
 
   const toggleCardExpansion = (id) => {
     setExpandedCards((prev) => {
@@ -413,7 +391,7 @@ Highlights:
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -494,10 +472,6 @@ Highlights:
               categories={categories}
               selectedCategory={selectedCategory}
               onCategoryChange={setSelectedCategory}
-              sortBy={sortBy}
-              onSortChange={setSortBy}
-              searchTerm={searchTerm}
-              onSearchChange={setSearchTerm}
               totalCount={achievements.length}
               filteredCount={filteredAchievements.length}
             />
@@ -529,7 +503,6 @@ Highlights:
                   variant="outline"
                   onClick={() => {
                     setSelectedCategory('all');
-                    setSearchTerm('');
                   }}
                   iconName="RotateCcw"
                   iconPosition="left"

@@ -7,9 +7,15 @@ import Button from '../../../components/ui/Button';
 const ProjectModal = ({ project, isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('overview');
 
+  React.useEffect(() => {
+    if (isOpen) {
+      setActiveTab('overview');
+    }
+  }, [isOpen, project]);
+
   const tabs = [
     { id: 'overview', label: 'Overview', icon: 'Eye' },
-    { id: 'demo', label: 'Live Demo', icon: 'Play' }
+    ...(project?.demoUrl ? [{ id: 'demo', label: 'Live Demo', icon: 'Play' }] : [])
   ];
 
   if (!project) return null;
@@ -57,10 +63,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 <button
                   key={tab?.id}
                   onClick={() => setActiveTab(tab?.id)}
-                  className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors duration-200 ${
-                    activeTab === tab?.id
-                      ? 'text-accent border-b-2 border-accent bg-accent/5' :'text-muted-foreground hover:text-foreground hover:bg-muted/30'
-                  }`}
+                  className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors duration-200 ${activeTab === tab?.id
+                      ? 'text-accent border-b-2 border-accent bg-accent/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
+                    }`}
                 >
                   <Icon name={tab?.icon} size={16} />
                   <span>{tab?.label}</span>
@@ -85,7 +90,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         <h3 className="text-lg font-semibold text-foreground mb-2">About the Project</h3>
                         <p className="text-muted-foreground leading-relaxed">{project?.description}</p>
                       </div>
-                      
+
                       <div>
                         <h3 className="text-lg font-semibold text-foreground mb-3">Tech Stack</h3>
                         <div className="flex flex-wrap gap-2">
