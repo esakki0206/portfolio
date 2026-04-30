@@ -321,13 +321,11 @@ const SkillsObservatoryVisualization = () => {
       <div className="pt-16 h-screen flex">
         {/* Filter Panel */}
         <motion.div
-          className={`${
-            isMobile
-              ? `fixed left-0 top-16 h-full w-72 bg-card border-r border-border shadow-elevation-3 z-30 transform ${
-                  isFilterPanelOpen ? 'translate-x-0' : '-translate-x-full'
-                }`
-              : 'w-72 bg-card border-r border-border'
-          } transition-transform duration-300 ease-in-out`}
+          className={`${isMobile
+            ? `fixed left-0 top-16 h-full w-72 bg-card border-r border-border shadow-elevation-3 z-30 transform ${isFilterPanelOpen ? 'translate-x-0' : '-translate-x-full'
+            }`
+            : 'w-72 bg-card border-r border-border'
+            } transition-transform duration-300 ease-in-out`}
         >
           <div className="p-6 h-full overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between mb-6">
@@ -394,7 +392,7 @@ const SkillsObservatoryVisualization = () => {
                 <div className="text-lg font-semibold text-success">
                   {Math.round(
                     filteredSkills.reduce((acc, s) => acc + s.proficiency, 0) /
-                      filteredSkills.length
+                    filteredSkills.length
                   )}%
                 </div>
                 <div className="text-xs text-muted-foreground">Avg Proficiency</div>
