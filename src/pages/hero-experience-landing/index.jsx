@@ -5,6 +5,7 @@ import ParticleSystem from './components/ParticleSystem';
 import HolographicAvatar from './components/HolographicAvatar';
 import FloatingCodeSnippets from './components/FloatingCodeSnippets';
 import HeroContent from './components/HeroContent';
+import ScrollIndicator from './components/ScrollIndicator';
 
 const HeroExperienceLanding = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -47,7 +48,7 @@ const HeroExperienceLanding = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left — Content */}
               <div
-                className={`space-y-8 transition-all duration-1000 ${
+                className={`transition-all duration-1000 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
@@ -65,6 +66,9 @@ const HeroExperienceLanding = () => {
             </div>
           </div>
         </main>
+
+        {/* Scroll Indicator */}
+        <ScrollIndicator />
       </div>
     </>
   );

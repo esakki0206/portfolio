@@ -1,12 +1,13 @@
 import React from 'react';
 import AnimatedTyping from './AnimatedTyping';
 import CTAButtons from './CTAButtons';
+import Icon from '../../../components/AppIcon';
 
 const HeroContent = () => {
   return (
-    <div className="text-center space-y-8 max-w-4xl mx-auto px-6">
+    <div className="space-y-8 text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
       {/* Badge */}
-      <div className="flex justify-center">
+      <div className="flex justify-center lg:justify-start">
         <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full">
           <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
           <span className="text-sm font-medium text-accent">Open to opportunities</span>
@@ -21,19 +22,19 @@ const HeroContent = () => {
           <span className="block text-accent">Today</span>
         </h1>
 
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center lg:justify-start mt-6">
           <AnimatedTyping />
         </div>
       </div>
 
       {/* Subtitle */}
-      <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+      <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
         Computer Science student at St. Joseph's College, passionate about creating innovative
         solutions that bridge the gap between complex technology and intuitive user experiences.
       </p>
 
       {/* Quick Stats */}
-      <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-sm text-muted-foreground">
+      <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 sm:gap-8 text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
           <span>5+ Real-World Projects</span>
@@ -49,7 +50,22 @@ const HeroContent = () => {
       </div>
 
       {/* CTA Buttons */}
-      <CTAButtons />
+      <div className="flex justify-center lg:justify-start">
+        <CTAButtons />
+      </div>
+
+      {/* Resume Download */}
+      <div className="flex justify-center lg:justify-start">
+        <a
+          href="/Esakkiappan__Resume_2026.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"
+        >
+          <Icon name="FileDown" size={16} className="group-hover:text-accent" />
+          <span className="underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-accent">Download Resume</span>
+        </a>
+      </div>
     </div>
   );
 };

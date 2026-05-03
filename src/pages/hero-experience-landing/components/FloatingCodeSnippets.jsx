@@ -32,19 +32,19 @@ const FloatingCodeSnippets = () => {
 
     const interval = setInterval(() => {
       setSnippets(prev => {
-        const updated = prev?.map(snippet => ({
+        const updated = prev.map(snippet => ({
             ...snippet,
-            y: snippet?.y - snippet?.speed
-          }))?.filter(snippet => snippet?.y > -100);
+            y: snippet.y - snippet.speed
+          })).filter(snippet => snippet.y > -100);
 
         // Add new snippet occasionally
-        if (Math.random() < 0.3 && updated?.length < 8) {
-          updated?.push(createSnippet());
+        if (Math.random() < 0.2 && updated.length < 8) {
+          updated.push(createSnippet());
         }
 
         return updated;
       });
-    }, 50);
+    }, 80);
 
     return () => clearInterval(interval);
   }, []);

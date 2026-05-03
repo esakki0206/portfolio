@@ -83,7 +83,8 @@ const PhilosophySection = () => {
     <motion.section
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
       className="py-16 px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto">
