@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
 import ParticleSystem from './components/ParticleSystem';
 import HolographicAvatar from './components/HolographicAvatar';
 import FloatingCodeSnippets from './components/FloatingCodeSnippets';
@@ -11,7 +12,7 @@ const HeroExperienceLanding = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 400);
+    const timer = setTimeout(() => setIsLoaded(true), 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,9 +39,12 @@ const HeroExperienceLanding = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-primary to-background relative overflow-hidden">
         <Header />
 
-        {/* Background Effects */}
+        {/* Background Effects — particle canvas is always rendered, floating
+            code snippets hidden on xs screens to reduce visual noise on mobile */}
         <ParticleSystem />
-        <FloatingCodeSnippets />
+        <div className="hidden sm:block">
+          <FloatingCodeSnippets />
+        </div>
 
         {/* Main Hero */}
         <main className="relative z-10 min-h-screen flex items-center justify-center pt-16">
@@ -48,18 +52,16 @@ const HeroExperienceLanding = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left — Content */}
               <div
-                className={`transition-all duration-1000 ${
-                  isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+                className={`transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
               >
                 <HeroContent />
               </div>
 
-              {/* Right — Avatar */}
+              {/* Right — Avatar (hidden on small phones, shown from sm+) */}
               <div
-                className={`flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${
-                  isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                }`}
+                className={`hidden sm:flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                  }`}
               >
                 <HolographicAvatar />
               </div>
@@ -67,9 +69,9 @@ const HeroExperienceLanding = () => {
           </div>
         </main>
 
-        {/* Scroll Indicator */}
-        <ScrollIndicator />
       </div>
+
+      <Footer />
     </>
   );
 };

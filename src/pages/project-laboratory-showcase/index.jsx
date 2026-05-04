@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../../components/ui/Header';
+import Footer from '../../components/ui/Footer';
 import ProjectCard from './components/ProjectCard';
 import ProjectModal from './components/ProjectModal';
 import FilterSystem from './components/FilterSystem';
@@ -10,10 +11,10 @@ import Button from '../../components/ui/Button';
 import { projectsData } from '../../data/projectsData';
 
 const ProjectLaboratoryShowcase = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject]     = useState(null);
+  const [isModalOpen, setIsModalOpen]             = useState(false);
   const [selectedTechnology, setSelectedTechnology] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery]             = useState('');
 
   const projects = projectsData;
 
@@ -24,7 +25,6 @@ const ProjectLaboratoryShowcase = () => {
         project.techStack.some((tech) =>
           tech.toLowerCase().includes(selectedTechnology.replace('-', ' '))
         );
-
       const matchesSearch =
         searchQuery === '' ||
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -32,32 +32,20 @@ const ProjectLaboratoryShowcase = () => {
         project.techStack.some((tech) =>
           tech.toLowerCase().includes(searchQuery.toLowerCase())
         );
-
       return matchesTechnology && matchesSearch;
     });
   }, [projects, selectedTechnology, searchQuery]);
 
-  const handleViewDetails = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
-
-  const handleClearFilters = () => {
-    setSelectedTechnology('all');
-    setSearchQuery('');
-  };
+  const handleViewDetails  = (project) => { setSelectedProject(project); setIsModalOpen(true); };
+  const handleCloseModal   = ()          => { setIsModalOpen(false); setSelectedProject(null); };
+  const handleClearFilters = ()          => { setSelectedTechnology('all'); setSearchQuery(''); };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-6 lg:px-8">
+      {/* Hero */}
+      <section className="pt-24 pb-16 px-6 lg:px-8 flex-1">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,10 +70,8 @@ const ProjectLaboratoryShowcase = () => {
             </p>
           </motion.div>
 
-          {/* Project Stats */}
           <ProjectStats projects={projects} filteredProjects={filteredProjects} />
 
-          {/* Filter System */}
           <FilterSystem
             selectedTechnology={selectedTechnology}
             onTechnologyChange={setSelectedTechnology}
@@ -114,7 +100,7 @@ const ProjectLaboratoryShowcase = () => {
                 <Icon name="Search" size={48} className="text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">No Projects Found</h3>
                 <p className="text-muted-foreground mb-6">
-                  Try adjusting your filters or search terms to find more projects.
+                  Try adjusting your filters or search terms.
                 </p>
                 <Button
                   variant="outline"
@@ -128,11 +114,12 @@ const ProjectLaboratoryShowcase = () => {
             )}
           </div>
 
-          {/* Call to Action */}
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
             className="text-center mt-16 pt-16 border-t border-border"
           >
             <h2 className="text-3xl font-bold text-foreground mb-4">Ready to Collaborate?</h2>
@@ -154,17 +141,9 @@ const ProjectLaboratoryShowcase = () => {
         </div>
       </section>
 
-      {/* Project Modal */}
       <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card/50 py-8 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-muted-foreground">
-            © {new Date().getFullYear()} Esakkiappan E. Built with React, Tailwind CSS &amp; lots of ☕
-          </p>
-        </div>
-      </footer>
+      <Footer variant="minimal" />
     </div>
   );
 };

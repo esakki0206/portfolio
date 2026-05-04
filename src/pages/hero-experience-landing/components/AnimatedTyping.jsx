@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const AnimatedTyping = () => {
   const [currentText, setCurrentText] = useState('');
@@ -6,7 +6,11 @@ const AnimatedTyping = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
-  const texts = ['React', 'Python', 'Node.js', 'PHP', 'TensorFlow', 'Arduino', 'MySQL'];
+  // Stable reference — defined outside state so useEffect deps are correct.
+  const texts = useMemo(
+    () => ['React', 'Python', 'Node.js', 'PHP', 'TensorFlow', 'Arduino', 'MySQL'],
+    []
+  );
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -19,18 +23,20 @@ const AnimatedTyping = () => {
       const current = texts[currentIndex];
 
       if (isDeleting) {
-        setCurrentText(current.substring(0, currentText.length - 1));
-        if (currentText === '') {
+        const next = current.substring(0, currentText.length - 1);
+        setCurrentText(next);
+        if (next === '') {
           setIsDeleting(false);
           setCurrentIndex((prev) => (prev + 1) % texts.length);
         }
       } else {
-        setCurrentText(current.substring(0, currentText.length + 1));
-        if (currentText === current) {
+        const next = current.substring(0, currentText.length + 1);
+        setCurrentText(next);
+        if (next === current) {
           setIsPaused(true);
         }
       }
-    }, isDeleting ? 50 : isPaused ? 2000 : 100);
+    }, isPaused ? 2000 : isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
   }, [currentText, currentIndex, isDeleting, isPaused, texts]);

@@ -9,7 +9,7 @@ const HeroContent = () => {
       {/* Badge */}
       <div className="flex justify-center lg:justify-start">
         <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full">
-          <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+          <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
           <span className="text-sm font-medium text-accent">Open to opportunities</span>
         </div>
       </div>
@@ -33,19 +33,19 @@ const HeroContent = () => {
         solutions that bridge the gap between complex technology and intuitive user experiences.
       </p>
 
-      {/* Quick Stats */}
+      {/* Quick Stats — updated to match actual project count */}
       <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 sm:gap-8 text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-          <span>5+ Real-World Projects</span>
+          <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
+          <span>8+ Real-World Projects</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+          <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
           <span>8.5 GPA</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
-          <span>Hackathon Participant</span>
+          <span className="w-2 h-2 bg-warning rounded-full animate-pulse" />
+          <span>Hackathon Winner</span>
         </div>
       </div>
 
@@ -62,8 +62,10 @@ const HeroContent = () => {
           rel="noopener noreferrer"
           className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"
         >
-          <Icon name="FileDown" size={16} className="group-hover:text-accent" />
-          <span className="underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-accent">Download Resume</span>
+          <Icon name="FileDown" size={16} className="group-hover:text-accent transition-colors duration-200" />
+          <span className="underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-accent">
+            Download Resume
+          </span>
         </a>
       </div>
     </div>
