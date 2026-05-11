@@ -54,17 +54,32 @@ const HeroContent = () => {
         <CTAButtons />
       </div>
 
-      {/* Resume Download */}
-      <div className="flex justify-center lg:justify-start">
+      {/* Resume Options */}
+      <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-6 mt-4">
+        {/* Download PDF */}
         <a
-          href="/Esakkiappan__Resume_2026.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          download="Esakkiappan_Resume.pdf"
           className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"
         >
           <Icon name="FileDown" size={16} className="group-hover:text-accent transition-colors duration-200" />
           <span className="underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-accent">
-            Download Resume
+            Download PDF Resume
+          </span>
+        </a>
+
+        {/* View HTML */}
+        <a
+          href="/resume.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"
+        >
+          <Icon name="ExternalLink" size={16} className="group-hover:text-accent transition-colors duration-200" />
+          <span className="underline underline-offset-4 decoration-muted-foreground/40 group-hover:decoration-accent">
+            View Web Resume
           </span>
         </a>
       </div>
