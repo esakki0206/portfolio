@@ -18,7 +18,7 @@ const ProjectStats = ({ projects, filteredProjects }) => {
     },
     {
       icon: 'MonitorPlay',
-      label: 'Live Demos',
+      label: 'Live',
       value: projects?.filter(p => p.demoUrl)?.length || 0,
       color: 'text-warning'
     },

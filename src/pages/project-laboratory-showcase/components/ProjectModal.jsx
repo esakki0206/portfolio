@@ -15,7 +15,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: 'Eye' },
-    ...(project?.demoUrl ? [{ id: 'demo', label: 'Live Demo', icon: 'Play' }] : [])
+    ...(project?.demoUrl ? [{ id: 'demo', label: 'Live', icon: 'Play' }] : [])
   ];
 
   if (!project) return null;
@@ -64,7 +64,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   key={tab?.id}
                   onClick={() => setActiveTab(tab?.id)}
                   className={`flex items-center space-x-2 px-6 py-4 text-sm font-medium transition-colors duration-200 ${activeTab === tab?.id
-                      ? 'text-accent border-b-2 border-accent bg-accent/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
+                    ? 'text-accent border-b-2 border-accent bg-accent/5' : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
                     }`}
                 >
                   <Icon name={tab?.icon} size={16} />
@@ -137,7 +137,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       iconPosition="right"
                       className="neon-glow-hover"
                     >
-                      Launch Live Demo
+                      Launch Live
                     </Button>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                     iconPosition="left"
                     className="flex-1 sm:flex-none neon-glow-hover ml-auto"
                   >
-                    Live Demo
+                    Live
                   </Button>
                 )}
               </div>

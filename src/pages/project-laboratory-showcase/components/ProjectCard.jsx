@@ -104,7 +104,7 @@ const ProjectCard = ({ project, onViewDetails, index }) => {
                 iconPosition="right"
                 className="flex-1 neon-glow-hover"
               >
-                Live Demo
+                Live
               </Button>
             )}
             <Button
