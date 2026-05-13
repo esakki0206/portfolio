@@ -139,7 +139,7 @@ const AchievementGalleryTimeline = () => {
             />
 
             {filteredAchievements.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                 {filteredAchievements.map((achievement, index) => (
                   <AchievementCard
                     key={achievement.id}

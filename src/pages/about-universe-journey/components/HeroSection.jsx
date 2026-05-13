@@ -6,14 +6,14 @@ import Image from '../../../components/AppImage';
 // Fixed particle positions — computed once, no Math.random() inside render.
 // Using useMemo with a seeded-style pattern so SSR/CSR results match.
 const PARTICLE_CONFIG = [
-  { x: 8,  y: 22, size: 3, dur: 18, delay: 0   },
-  { x: 25, y: 45, size: 4, dur: 22, delay: 3   },
-  { x: 42, y: 15, size: 2, dur: 16, delay: 6   },
-  { x: 58, y: 68, size: 3, dur: 20, delay: 1   },
-  { x: 73, y: 30, size: 4, dur: 24, delay: 8   },
-  { x: 88, y: 55, size: 2, dur: 18, delay: 4   },
-  { x: 15, y: 78, size: 3, dur: 26, delay: 10  },
-  { x: 65, y: 88, size: 2, dur: 14, delay: 5   },
+  { x: 8, y: 22, size: 3, dur: 18, delay: 0 },
+  { x: 25, y: 45, size: 4, dur: 22, delay: 3 },
+  { x: 42, y: 15, size: 2, dur: 16, delay: 6 },
+  { x: 58, y: 68, size: 3, dur: 20, delay: 1 },
+  { x: 73, y: 30, size: 4, dur: 24, delay: 8 },
+  { x: 88, y: 55, size: 2, dur: 18, delay: 4 },
+  { x: 15, y: 78, size: 3, dur: 26, delay: 10 },
+  { x: 65, y: 88, size: 2, dur: 14, delay: 5 },
 ];
 
 const HeroSection = () => {
@@ -36,18 +36,18 @@ const HeroSection = () => {
   }, [roles.length]);
 
   const containerVariants = {
-    hidden:   { opacity: 0 },
-    visible:  { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.3 } },
   };
 
   const itemVariants = {
-    hidden:   { opacity: 0, y: 30 },
-    visible:  { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] } },
   };
 
   const imageVariants = {
-    hidden:   { opacity: 0, scale: 0.8 },
-    visible:  { opacity: 1, scale: 1, transition: { duration: 1, ease: 'easeOut' } },
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: 'easeOut' } },
   };
 
   return (
@@ -83,8 +83,8 @@ const HeroSection = () => {
           <svg className="w-full h-full">
             <defs>
               <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%"   stopColor="var(--color-accent)"   stopOpacity="0.5" />
-                <stop offset="100%" stopColor="var(--color-success)"  stopOpacity="0.2" />
+                <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="var(--color-success)" stopOpacity="0.2" />
               </linearGradient>
             </defs>
             <motion.path
@@ -153,9 +153,9 @@ const HeroSection = () => {
               {/* Stats */}
               <motion.div variants={itemVariants} className="grid grid-cols-3 gap-4 py-4">
                 {[
-                  { value: '8.5', label: 'GPA',      color: 'text-accent'   },
-                  { value: '8+',  label: 'Projects',  color: 'text-success'  },
-                  { value: '4',   label: 'Wins',      color: 'text-warning'  },
+                  { value: '8.5', label: 'GPA', color: 'text-accent' },
+                  { value: '9+', label: 'Projects', color: 'text-success' },
+                  { value: '4', label: 'Wins', color: 'text-warning' },
                 ].map(({ value, label, color }) => (
                   <div key={label} className="text-center lg:text-left">
                     <div className={`text-2xl font-bold ${color}`}>{value}</div>
@@ -268,10 +268,10 @@ const HeroSection = () => {
             <h3 className="text-center text-lg font-semibold text-foreground mb-6">What I Do</h3>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               {[
-                { icon: 'Globe',  title: 'Full-Stack Web',   desc: 'React · PHP · MySQL'         },
-                { icon: 'Cpu',    title: 'IoT Prototyping',  desc: 'Arduino · ESP32-CAM'          },
-                { icon: 'Brain',  title: 'Machine Learning', desc: 'TensorFlow · Keras · Python'  },
-                { icon: 'Award',  title: 'Certifications',   desc: 'NPTEL · Coursera'             },
+                { icon: 'Globe', title: 'Full-Stack Web', desc: 'React · PHP · MySQL' },
+                { icon: 'Cpu', title: 'IoT Prototyping', desc: 'Arduino · ESP32-CAM' },
+                { icon: 'Brain', title: 'Machine Learning', desc: 'TensorFlow · Keras · Python' },
+                { icon: 'Award', title: 'Certifications', desc: 'NPTEL · Coursera' },
               ].map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -301,11 +301,11 @@ const HeroSection = () => {
             className="mt-8 flex flex-wrap justify-center gap-2 md:gap-3"
           >
             {[
-              { icon: 'Target', label: 'Problem Solver'  },
-              { icon: 'Layers', label: 'Clean Code'       },
-              { icon: 'Zap',    label: 'Quick Learner'    },
-              { icon: 'Users',  label: 'Team Player'      },
-              { icon: 'Trophy', label: '1st Rank Holder'  },
+              { icon: 'Target', label: 'Problem Solver' },
+              { icon: 'Layers', label: 'Clean Code' },
+              { icon: 'Zap', label: 'Quick Learner' },
+              { icon: 'Users', label: 'Team Player' },
+              { icon: 'Trophy', label: '1st Rank Holder' },
             ].map((s) => (
               <span
                 key={s.label}

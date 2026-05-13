@@ -37,7 +37,7 @@ const HeroContent = () => {
       <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6 sm:gap-8 text-sm text-muted-foreground">
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
-          <span>8+ Real-World Projects</span>
+          <span>9+ Real-World Projects</span>
         </div>
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />

@@ -36,7 +36,7 @@ const StatsOverview = ({ achievements }) => {
     {
       icon: 'Globe',
       label: 'Live in Production',
-      value: 5,
+      value: 6,
       color: 'from-cyan-500 to-blue-600',
       description: 'Real-world deployments',
     },

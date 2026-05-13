@@ -51,7 +51,7 @@ const AchievementCard = ({ achievement, index, isExpanded, onToggle }) => {
       className="group"
     >
       <motion.div
-        className={`glass-card p-5 md:p-6 h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 ${
+        className={`glass-card p-4 sm:p-5 md:p-6 flex flex-col transition-all duration-300 hover:shadow-xl hover:shadow-accent/10 ${
           isExpanded ? 'ring-1 ring-accent/40' : ''
         }`}
         whileHover={{ y: -4 }}
@@ -110,16 +110,16 @@ const AchievementCard = ({ achievement, index, isExpanded, onToggle }) => {
 
         {/* ── Impact Metrics ──────────────────────────────────────────── */}
         {achievement?.impact && (
-          <div className="grid grid-cols-3 gap-2 mb-4">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-4">
             {achievement.impact.map((metric, i) => (
               <div
                 key={i}
-                className="text-center p-2 bg-muted/15 rounded-lg border border-border/30"
+                className="text-center p-1.5 sm:p-2 bg-muted/15 rounded-lg border border-border/30 min-w-0 overflow-hidden"
               >
-                <div className="text-base md:text-lg font-bold text-accent leading-tight">
+                <div className="text-xs sm:text-base md:text-lg font-bold text-accent leading-tight truncate px-0.5">
                   {metric?.value}
                 </div>
-                <div className="text-[10px] md:text-xs text-muted-foreground mt-0.5">
+                <div className="text-[9px] sm:text-[10px] md:text-xs text-muted-foreground mt-0.5 truncate px-0.5">
                   {metric?.label}
                 </div>
               </div>

@@ -133,5 +133,22 @@ export const projectsData = [
       'Intuitive user interface for locating misplaced objects in real-time',
       'Comprehensive final year project demonstrating mobile and AR capabilities'
     ]
+  },
+  {
+    id: 9,
+    title: 'AIACHE Official Website',
+    description: 'The official platform for The All India Association for Christian Higher Education (AIACHE), representing over 500 institutions. Features a simple, highly accessible design and an intuitive admin panel for seamless resource management.',
+    image: '/assets/images/AIACHE.png',
+    category: 'Full Stack Development',
+    techStack: ['PHP', 'HTML', 'CSS', 'JavaScript'],
+    status: 'Live',
+    githubUrl: null,
+    demoUrl: 'https://aiache.co.in',
+    features: [
+      'Accessible and responsive UI tailored for users of all age groups',
+      'Integrated admin panel for easy uploading and management of resources',
+      'Dynamic content management powered by a custom PHP backend',
+      'Fast, lightweight performance using vanilla HTML, CSS, and JS'
+    ]
   }
 ];
