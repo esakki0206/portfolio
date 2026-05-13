@@ -58,7 +58,7 @@ const HeroContent = () => {
       <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-6 mt-4">
         {/* Download PDF */}
         <a
-          href="/resume.pdf"
+          href="/Esakki_resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download="Esakkiappan_Resume.pdf"
@@ -72,7 +72,7 @@ const HeroContent = () => {
 
         {/* View HTML */}
         <a
-          href="/resume.html"
+          href="Esakki_resume.html"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"
