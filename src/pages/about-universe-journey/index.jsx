@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Footer from '../../components/ui/Footer';
 import HeroSection from './components/HeroSection';
@@ -9,7 +10,6 @@ import ContactSection from './components/ContactSection';
 
 const AboutUniverseJourney = () => {
   useEffect(() => {
-    document.title = "About — Esakkiappan's Portfolio";
     window.scrollTo(0, 0);
   }, []);
 
@@ -21,6 +21,17 @@ const AboutUniverseJourney = () => {
       className="min-h-screen bg-background text-foreground"
     >
       <Header />
+
+      <Helmet>
+        <title>About — Esakkiappan Portfolio</title>
+        <meta
+          name="description"
+          content="Learn about Esakkiappan E — CS student, full-stack developer, IoT enthusiast, and hackathon winner with 8.5 GPA."
+        />
+        <meta property="og:title" content="About — Esakkiappan Portfolio" />
+        <meta property="og:description" content="My journey in Computer Science — from first line of code to production apps." />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
       <main className="pt-16">
         <HeroSection />

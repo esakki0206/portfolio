@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 
@@ -18,6 +19,7 @@ const PARTICLE_CONFIG = [
 
 const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
+  const navigate = useNavigate();
 
   const roles = useMemo(() => [
     'Computer Science Student',
@@ -131,16 +133,18 @@ const HeroSection = () => {
                 </h1>
                 {/* Role rotator — single element, keyed on role for exit animation */}
                 <div className="h-10 flex items-center justify-center lg:justify-start overflow-hidden">
-                  <motion.h2
-                    key={currentRole}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -16 }}
-                    transition={{ duration: 0.4 }}
-                    className="text-xl lg:text-2xl font-semibold text-muted-foreground"
-                  >
-                    {roles[currentRole]}
-                  </motion.h2>
+                  <AnimatePresence mode="wait">
+                    <motion.h2
+                      key={currentRole}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-xl lg:text-2xl font-semibold text-muted-foreground"
+                    >
+                      {roles[currentRole]}
+                    </motion.h2>
+                  </AnimatePresence>
                 </div>
               </motion.div>
 
@@ -176,13 +180,13 @@ const HeroSection = () => {
                   <Icon name="MessageCircle" size={18} />
                   <span>Let's Connect</span>
                 </button>
-                <a
-                  href="/projects"
+                <button
+                  onClick={() => navigate('/projects')}
                   className="inline-flex items-center space-x-2 px-6 py-3 border border-border text-foreground rounded-lg font-medium hover:bg-muted/10 transition-all duration-300 magnetic-button"
                 >
                   <Icon name="Code2" size={18} />
                   <span>View Projects</span>
-                </a>
+                </button>
               </motion.div>
 
               {/* Socials */}

@@ -1,6 +1,7 @@
 {
-  "short_name": "codesphere-portfolio",
-  "name": "codesphere-portfolio",
+  "short_name": "Esakkiappan",
+  "name": "Esakkiappan E — Portfolio",
+  "description": "Portfolio of Esakkiappan E — Full-Stack Developer, CS Student, IoT Enthusiast.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,8 +9,10 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "education", "technology"]
 }

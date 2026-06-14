@@ -34,6 +34,8 @@ const HeroExperienceLanding = () => {
           content="Explore real projects, skills, and achievements from my Computer Science journey."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://esakkiappan.dev/" />
+        <meta property="og:image" content="https://esakkiappan.dev/assets/images/Profile_Photo.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-background via-primary to-background relative overflow-hidden">
@@ -67,6 +69,7 @@ const HeroExperienceLanding = () => {
               </div>
             </div>
           </div>
+          <ScrollIndicator />
         </main>
 
       </div>

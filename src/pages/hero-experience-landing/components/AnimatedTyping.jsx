@@ -8,7 +8,7 @@ const AnimatedTyping = () => {
 
   // Stable reference — defined outside state so useEffect deps are correct.
   const texts = useMemo(
-    () => ['React', 'Python', 'Node.js', 'PHP', 'TensorFlow', 'Arduino', 'MySQL'],
+    () => ['React', 'Python', 'Node.js', 'PHP', 'TensorFlow', 'Arduino', 'MySQL', 'MongoDB', 'Tailwind CSS', 'React Native'],
     []
   );
 

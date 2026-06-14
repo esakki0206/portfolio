@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Footer from '../../components/ui/Footer';
 import SkillUniverse from './components/SkillUniverse';
@@ -62,6 +63,17 @@ const SkillsObservatoryVisualization = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Helmet>
+        <title>Skills — Esakkiappan Portfolio</title>
+        <meta
+          name="description"
+          content="Interactive skills observatory: React, Python, TensorFlow, PHP, MySQL, and more — with proficiency levels and learning timelines."
+        />
+        <meta property="og:title" content="Skills — Esakkiappan Portfolio" />
+        <meta property="og:description" content="Interactive skills visualization with proficiency tracking." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <Header />
 
       {/* Observatory layout — fixed height panel below header */}

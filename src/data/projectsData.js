@@ -7,7 +7,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['MongoDB', 'Express', 'React', 'Node.js', 'Tailwind CSS'],
     status: 'Live',
+    year: 2025,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://shrisaicollections.in/',
     features: [
       'User authentication and secure session management',
@@ -24,7 +26,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['MongoDB', 'Express', 'React', 'Node.js'],
     status: 'Live',
+    year: 2025,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://qurshidbegum.vercel.app/',
     features: [
       'Comprehensive book listing and intelligent search functionality',
@@ -41,7 +45,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['MongoDB', 'Express', 'React', 'Node.js', 'Payment Gateway Integration'],
     status: 'Live',
+    year: 2025,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://izon.frontierwox.in/',
     features: [
       'Dynamic course listing and seamless student enrollment system',
@@ -58,7 +64,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['MongoDB', 'Express', 'React', 'Node.js', 'Tailwind CSS'],
     status: 'Live',
+    year: 2025,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://vibaco-tbbn.vercel.app/',
     features: [
       'Curated product display tailored for gifting',
@@ -75,7 +83,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['React', 'PHP', 'MySQL', 'Tailwind CSS'],
     status: 'Live',
+    year: 2024,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://resumebuilder.frontierwox.in/',
     features: [
       'Live preview of the resume as you type',
@@ -92,7 +102,9 @@ export const projectsData = [
     category: 'IoT / Embedded Systems',
     techStack: ['ESP32', 'C++', 'IoT', 'Wi-Fi Streaming'],
     status: 'Completed',
+    year: 2024,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: null,
     features: [
       'Live MJPEG video stream accessible via mobile app or browser',
@@ -108,7 +120,9 @@ export const projectsData = [
     category: 'IoT / Embedded Systems',
     techStack: ['IoT', 'C++', 'Automation', 'Sensors', 'ESP32'],
     status: 'Completed',
+    year: 2024,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: null,
     features: [
       'Soil Moisture Monitoring: Detects dryness and triggers automatic watering',
@@ -125,7 +139,9 @@ export const projectsData = [
     category: 'Mobile & AR Development',
     techStack: ['Kotlin', 'React Native', 'Android', 'AR'],
     status: 'Completed',
+    year: 2024,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: null,
     features: [
       'Indoor object tracking and spatial mapping using AR technology',
@@ -142,7 +158,9 @@ export const projectsData = [
     category: 'Full Stack Development',
     techStack: ['PHP', 'HTML', 'CSS', 'JavaScript'],
     status: 'Live',
+    year: 2025,
     githubUrl: null,
+    githubNote: 'Private / Client Work',
     demoUrl: 'https://aiache.co.in',
     features: [
       'Accessible and responsive UI tailored for users of all age groups',

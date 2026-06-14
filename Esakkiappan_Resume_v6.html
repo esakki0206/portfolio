@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Esakkiappan — Full Stack Software Developer</title>
+<style>
+@page {
+  size: A4;
+  margin: 0.6cm 0.9cm 0.5cm 0.9cm;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.8pt;
+  color: #374151;
+  background: #ffffff;
+  line-height: 1.3;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ─── HEADER ─── */
+.header {
+  background: #f8fafc;
+  border-top: 3px solid #1e3a8a;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 6px 14px 5px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hdr-left { flex: 1; }
+.hdr-right { text-align: right; padding-top: 0; flex-shrink: 0; padding-left: 12px; }
+
+.name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20pt;
+  font-weight: bold;
+  color: #0f172a;
+  letter-spacing: 0.1px;
+  line-height: 1;
+}
+
+.name-bar {
+  display: block;
+  width: 34px;
+  height: 2.5px;
+  background: #2563eb;
+  border-radius: 2px;
+  margin: 4px 0 3px 1px;
+}
+
+.job-title {
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: #1e3a8a;
+  line-height: 1.2;
+}
+
+.c-item {
+  font-size: 6.8pt;
+  color: #475569;
+  line-height: 1.6;
+  display: block;
+  white-space: nowrap;
+}
+
+/* ─── MAIN ─── */
+.main { padding: 4px 14px 4px 14px; }
+
+/* ─── SECTION TITLES ─── */
+.sec-title {
+  display: block;
+  background: #f1f5f9;
+  border-left: 3px solid #1e3a8a;
+  border-radius: 0 3px 3px 0;
+  padding: 2px 8px 2px 7px;
+  font-size: 6.8pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #1e3a8a;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  page-break-after: avoid;
+}
+.sec-title.first { margin-top: 0; }
+
+/* ─── SUMMARY ─── */
+.summary {
+  font-size: 7.6pt;
+  color: #374151;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ─── SKILLS ─── */
+.sk-tbl {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+.sk-row { display: table-row; }
+
+.sk-lbl {
+  display: table-cell;
+  font-size: 7.2pt;
+  font-weight: bold;
+  color: #1e3a8a;
+  white-space: nowrap;
+  vertical-align: top;
+  padding: 0.5px 8px 0.5px 0;
+  line-height: 1.4;
+}
+
+.sk-val {
+  display: table-cell;
+  font-size: 7.2pt;
+  color: #1e293b;
+  padding: 0.5px 0;
+  line-height: 1.45;
+  border-bottom: 1px solid #f3f6fa;
+}
+
+.sk-row:last-child .sk-val { border-bottom: none; }
+
+/* ─── ENTRIES ─── */
+.entry {
+  margin-bottom: 2.5px;
+  page-break-inside: avoid;
+}
+.entry.first { margin-top: 0; }
+.entry.last  { margin-bottom: 0; }
+
+.e-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.e-left { flex: 1; min-width: 0; }
+.e-right { flex-shrink: 0; padding-left: 8px; text-align: right; }
+
+.e-role {
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.e-period {
+  font-size: 6.8pt;
+  color: #64748b;
+  font-style: italic;
+  white-space: nowrap;
+  display: block;
+}
+
+.e-rule {
+  border: none;
+  border-top: 1px solid #eaeff5;
+  margin: 1.5px 0;
+}
+
+.e-company {
+  font-size: 7.6pt;
+  font-weight: bold;
+  color: #1e3a8a;
+  line-height: 1.25;
+}
+
+.e-location {
+  font-size: 6.8pt;
+  color: #64748b;
+  margin-bottom: 1.5px;
+  line-height: 1.25;
+}
+
+.e-sub {
+  font-size: 6.8pt;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 1.5px;
+  line-height: 1.3;
+}
+
+/* ─── STACK ─── */
+.stack {
+  display: block;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 2.5px solid #2563eb;
+  border-radius: 0 3px 3px 0;
+  color: #1e3a8a;
+  font-size: 6.5pt;
+  font-weight: bold;
+  padding: 2px 7px;
+  margin-bottom: 1.5px;
+  line-height: 1.4;
+}
+
+/* ─── BULLETS ─── */
+ul.bl { list-style: none; padding: 0; margin: 0; }
+
+ul.bl li {
+  font-size: 7.2pt;
+  color: #374151;
+  line-height: 1.35;
+  margin-bottom: 0.5px;
+  padding-left: 9px;
+  position: relative;
+}
+
+ul.bl li:last-child { margin-bottom: 0; }
+
+ul.bl li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #2563eb;
+  font-size: 8pt;
+  font-weight: bold;
+  line-height: 1.35;
+}
+
+.e-sep {
+  border: none;
+  border-top: 1px solid #edf1f7;
+  margin: 3px 0;
+}
+
+/* ─── EDUCATION ─── */
+.edu-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.edu-right {
+  flex-shrink: 0;
+  padding-left: 8px;
+  text-align: right;
+}
+
+.edu-left { flex: 1; min-width: 0; }
+
+.edu-period   { font-size: 6.8pt; color: #64748b; font-style: italic; display: block; }
+.edu-expected { font-size: 6.6pt; color: #15803d; font-weight: bold; display: block; margin-top: 2px; }
+
+.edu-degree  { font-size: 8.5pt; font-weight: bold; color: #0f172a; line-height: 1.1; }
+.edu-college { font-size: 7.6pt; font-weight: bold; color: #1e3a8a; }
+.edu-meta    { font-size: 6.8pt; color: #64748b; margin-top: 1px; }
+.edu-stats   { font-size: 7.2pt; font-weight: bold; color: #0f172a; margin-top: 2px; }
+.edu-courses { font-size: 6.8pt; color: #64748b; line-height: 1.4; margin-top: 1.5px; }
+
+/* ─── AWARDS ─── */
+.award {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3px;
+  page-break-inside: avoid;
+}
+.award:last-child { margin-bottom: 0; }
+
+.award-yr   { flex-shrink: 0; padding-left: 8px; text-align: right; }
+.award-date { font-size: 6.8pt; color: #64748b; font-style: italic; display: block; }
+
+.award-body {
+  flex: 1;
+  min-width: 0;
+  padding-left: 7px;
+  border-left: 2.5px solid #2563eb;
+}
+
+.award-name { font-size: 7.6pt; font-weight: bold; color: #0f172a; line-height: 1.15; }
+.award-desc { font-size: 6.8pt; color: #64748b; margin-top: 1px; line-height: 1.4; }
+
+/* ─── CERTS ─── */
+.cert {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2px;
+  page-break-inside: avoid;
+}
+.cert:last-child { margin-bottom: 0; }
+
+.cert-yr   { flex-shrink: 0; padding-left: 8px; text-align: right; }
+.cert-date { font-size: 6.8pt; color: #64748b; font-style: italic; display: block; }
+
+.cert-body { flex: 1; min-width: 0; }
+.cert-name { font-size: 7.6pt; font-weight: bold; color: #0f172a; }
+.cert-prov { font-size: 6.8pt; font-weight: bold; color: #1e3a8a; margin-top: 1px; }
+
+/* ─── FOOTER ─── */
+.footer {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 2px 14px 3px;
+  text-align: center;
+  font-size: 6.2pt;
+  color: #94a3b8;
+}
+
+pre, table, figure, img, svg, blockquote { max-width: 100%; box-sizing: border-box; }
+
+@media print {
+  .entry, .award, .cert, ul.bl li { page-break-inside: avoid; }
+  .sec-title { page-break-after: avoid; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="hdr-left">
+    <div class="name">Esakkiappan</div>
+    <span class="name-bar"></span>
+    <div class="job-title">Full Stack Software Developer</div>
+  </div>
+  <div class="hdr-right">
+    <span class="c-item">esakki0720@gmail.com</span>
+    <span class="c-item">+91 88383 84624  |  Tamilnadu, India</span>
+    <span class="c-item">linkedin.com/in/esakkiappan</span>
+    <span class="c-item">github.com/Esakkiappan10</span>
+    <span class="c-item">portfolio-esakkiappan-e.vercel.app</span>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="sec-title first">Professional Summary</div>
+<p class="summary">
+  Results-driven Full Stack Software Engineer delivering production systems end-to-end — from responsive frontends with <strong>React.js</strong> and <strong>Tailwind CSS</strong> to scalable backends with <strong>Node.js, Express.js,</strong> and RESTful APIs. Built and launched a Coursera-style LMS serving <strong>300+ students</strong>, multiple live MERN-stack e-commerce platforms, and an IoT soil-intelligence system. Hackathon First-Place winner and consistent <strong>Department First Rank</strong> holder — skilled in Agile, Git, cross-functional collaboration, and performance optimization.
+</p>
+
+<div class="sec-title">Technical Skills</div>
+<div class="sk-tbl">
+  <div class="sk-row">
+    <div class="sk-lbl">Languages:</div>
+    <div class="sk-val">JavaScript, Python, Java, Kotlin, PHP</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Frontend:</div>
+    <div class="sk-val">React.js, React Native, HTML5, CSS3, Tailwind CSS, GSAP, Responsive Design</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Backend:</div>
+    <div class="sk-val">Node.js, Express.js, FastAPI, Flask, REST APIs, JWT Authentication</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Databases:</div>
+    <div class="sk-val">MongoDB, MySQL, SQLite, Supabase</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">DevOps &amp; Tools:</div>
+    <div class="sk-val">Git, GitHub, VS Code, Vercel, VPS, Nginx, Linux</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">IoT &amp; Embedded:</div>
+    <div class="sk-val">ESP32, Embedded C/C++, Multi-Sensor Integration, IoT Firmware</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">ML &amp; AR:</div>
+    <div class="sk-val">YOLOv8n, Augmented Reality (AR), Spatial Mapping, Visual Positioning System</div>
+  </div>
+  <div class="sk-row">
+    <div class="sk-lbl">Soft Skills:</div>
+    <div class="sk-val">Leadership, Problem Solving, Critical Thinking, Team Collaboration, Cross-functional Communication</div>
+  </div>
+</div>
+
+<div class="sec-title">Professional Experience</div>
+<div class="entry first last">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">Full Stack Developer Intern</div></div>
+    <div class="e-right"><span class="e-period">May 2025 — May 2026</span></div>
+  </div>
+  <hr class="e-rule">
+  <div class="e-company">FrontierWox.in  <span style="font-weight:normal;color:#64748b;">|  Tech Startup — Developer Tools and Web Platforms  |  Tamilnadu, India</span></div>
+  <ul class="bl">
+    <li>Spearheaded performance optimization of flagship website using <strong>React.js</strong> — lazy loading, code-splitting, component restructuring — significant Lighthouse score improvements.</li>
+    <li>Engineered production-grade full-stack <strong>Resume Builder</strong> (React.js, Tailwind, PHP) with dynamic multi-template rendering and one-click PDF export — shipped company-wide.</li>
+    <li>Architected and launched a Coursera-style <strong>LMS serving 300+ active students</strong> — course creation, video lessons, live classes, quizzes, progress tracking, auto-generated certificates — MERN stack end-to-end.</li>
+    <li>Implemented <strong>JWT authentication</strong>, RBAC, and payment gateway with role-specific dashboards for secure multi-tenant access.</li>
+    <li>Optimized <strong>MongoDB</strong> schemas and <strong>Node.js</strong> APIs to sustain <strong>300+ concurrent sessions</strong> with sub-100ms response times.</li>
+  </ul>
+</div>
+
+<div class="sec-title">Projects</div>
+
+<div class="entry first">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">HoloFind-X: AR Indoor Navigation</div></div>
+    <div class="e-right"><span class="e-period">Mar 2026 — Apr 2026</span></div>
+  </div>
+  <div class="e-sub">Offline Mobile App for Object Tracking  |  React Native, Kotlin, YOLOv8n, SQLite, VPS, AR, VPS</div>
+  <ul class="bl">
+    <li>Engineered fully offline AR indoor navigation app using <strong>React Native</strong> and <strong>Kotlin</strong> — spatial mapping and custom Visual Positioning System (VPS), zero server dependency.</li>
+    <li>Integrated localized <strong>YOLOv8n</strong> ML model for real-time object detection with offline <strong>SQLite</strong> storage — sub-second retrieval without internet.</li>
+  </ul>
+</div>
+
+<hr class="e-sep">
+
+<div class="entry">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">FWT Izon: Learning Management System</div></div>
+    <div class="e-right"><span class="e-period">May 2025 — May 2026</span></div>
+  </div>
+  <div class="e-sub">Coursera-Style E-Learning  |  MERN Stack, JWT, REST APIs, Payment Gateway, AI Recommendations</div>
+  <ul class="bl">
+    <li>Full-stack LMS serving <strong>300+ students</strong> with course creation, video streaming, quizzes, live classes, progress dashboards, auto-generated certificates.</li>
+    <li>Secure multi-role access via <strong>JWT + RBAC</strong>, payment gateway, isolated instructor and learner portals. Tuned for <strong>300+ concurrent sessions</strong> with low latency.</li>
+  </ul>
+</div>
+
+<hr class="e-sep">
+
+<div class="entry">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">E-Commerce: Saree Shop &amp; Book Store</div></div>
+    <div class="e-right"><span class="e-period">Jan 2026 — Feb 2026</span></div>
+  </div>
+  <div class="e-sub">Full-Stack MERN E-Commerce  |  JWT, REST APIs, VPS, Nginx</div>
+  <ul class="bl">
+    <li>Built and deployed two live e-commerce storefronts (Saree retailer &amp; Bookstore) using <strong>MERN stack</strong> — JWT auth, product catalog, cart, order management, full-text search.</li>
+    <li>Production deployment on <strong>VPS with Nginx</strong> reverse proxy, MongoDB Atlas, Git-based CI — zero-downtime live storefronts.</li>
+  </ul>
+</div>
+
+<hr class="e-sep">
+
+<div class="entry last">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">ElectroPlant-X: IoT Soil Intelligence</div></div>
+    <div class="e-right"><span class="e-period">Jan 2026 — Feb 2026</span></div>
+  </div>
+  <div class="e-sub">Solar-Powered IoT Monitoring  |  ESP32, Embedded C/C++, Multi-Sensor, Web Dashboard</div>
+  <ul class="bl">
+    <li>Solar-powered <strong>IoT platform</strong> with 5+ environmental sensors — soil moisture, temperature, pH, plant bio-signals in real time, zero grid dependency.</li>
+    <li><strong>ESP32 sensor fusion engine</strong> computing proprietary Soil Alive Index for precision irrigation — OLED onsite feedback and live web dashboard.</li>
+  </ul>
+</div>
+
+<div class="sec-title">Education</div>
+<div class="edu-wrap">
+  <div class="edu-left">
+    <div class="edu-degree">B.Sc. Computer Science  <span style="font-weight:normal;color:#64748b;">|  St. Joseph College (Autonomous), Tiruchirappalli  |  Bharathidasan University</span></div>
+    <div class="edu-stats">CGPA: 8.5 / 10  |  Department First Rank (Semesters 1–5)  |  Academic Excellence Award</div>
+    <div class="edu-courses">Relevant Coursework: Data Structures &amp; Algorithms, DBMS, Computer Networks, Operating Systems, Software Engineering</div>
+  </div>
+  <div class="edu-right">
+    <span class="edu-period">2023 — 2026</span>
+    <span class="edu-expected">Expected 2026</span>
+  </div>
+</div>
+
+<div class="sec-title">Certifications</div>
+
+<div class="cert">
+  <div class="cert-body">
+    <div class="cert-name">Project Execution: Running the Project  <span style="font-weight:normal;color:#64748b;">—  Google  |  Coursera</span></div>
+  </div>
+  <div class="cert-yr"><span class="cert-date">Feb 2026 — Present</span></div>
+</div>
+
+<div class="cert">
+  <div class="cert-body">
+    <div class="cert-name">Programming in Java  <span style="font-weight:normal;color:#64748b;">—  NPTEL  |  IIT</span></div>
+  </div>
+  <div class="cert-yr"><span class="cert-date">Jul 2024 — Nov 2024</span></div>
+</div>
+
+<div class="cert">
+  <div class="cert-body">
+    <div class="cert-name">Data Science for Engineers  <span style="font-weight:normal;color:#64748b;">—  NPTEL  |  IIT</span></div>
+  </div>
+  <div class="cert-yr"><span class="cert-date">May 2023 — Sep 2023</span></div>
+</div>
+
+<div class="sec-title">Awards and Honours</div>
+
+<div class="award">
+  <div class="award-body">
+    <div class="award-name">1st Place — St. Joseph College Hackathon 2025</div>
+    <div class="award-desc">Built <strong>Trichy Local Farmers Connect Platform</strong> linking farmers, producers, and consumers for fair-price direct trade — top project from all competing teams.</div>
+  </div>
+  <div class="award-yr"><span class="award-date">Aug 2025</span></div>
+</div>
+
+<div class="award">
+  <div class="award-body">
+    <div class="award-name">Outstanding Student Award — Department First Rank</div>
+    <div class="award-desc">Department First Rank for academic excellence across Semesters 1 – 5  |  St. Joseph College (Autonomous), Tiruchirappalli</div>
+  </div>
+  <div class="award-yr"><span class="award-date">Dec 2023</span></div>
+</div>
+
+<div class="sec-title">Leadership and Initiatives</div>
+<div class="entry first last">
+  <div class="e-hdr">
+    <div class="e-left"><div class="e-role">Technical Session Presenter — Mastering AI: Prompt Engineering</div></div>
+    <div class="e-right"><span class="e-period">Sep 2025</span></div>
+  </div>
+  <div class="e-location">St. Joseph College (Autonomous), Tiruchirappalli</div>
+  <ul class="bl">
+    <li>Delivered a technical session on <strong>Prompt Engineering</strong> and responsible AI for 50+ students — live demonstrations, practical guidelines, Q&A — recognized for exceptional depth and clarity.</li>
+  </ul>
+</div>
+
+</div>
+
+<div class="footer">References available upon request.</div>
+
+</body>
+</html>

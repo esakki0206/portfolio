@@ -102,7 +102,18 @@ const Header = () => {
             </nav>
 
             {/* ── Desktop CTA ── */}
-            <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-3">
+              <a
+                href="/Esakki_resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Esakkiappan_Resume.pdf"
+                className="inline-flex items-center space-x-2 px-3 py-1.5 text-sm font-medium text-accent bg-accent/10 border border-accent/20 rounded-lg hover:bg-accent/20 transition-all duration-200"
+                id="header-resume-download"
+              >
+                <Icon name="FileDown" size={14} />
+                <span>Resume</span>
+              </a>
               <Button
                 variant="outline"
                 size="sm"
@@ -188,7 +199,18 @@ const Header = () => {
               </nav>
 
               {/* LinkedIn CTA */}
-              <div className="px-4 py-4 border-t border-border shrink-0">
+              <div className="px-4 py-4 border-t border-border shrink-0 space-y-2">
+                <a
+                  href="/Esakki_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Esakkiappan_Resume.pdf"
+                  className="w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 text-sm font-medium text-accent bg-accent/10 border border-accent/20 rounded-lg hover:bg-accent/20 transition-all duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Icon name="FileDown" size={16} />
+                  <span>Download Resume</span>
+                </a>
                 <Button
                   variant="outline"
                   fullWidth

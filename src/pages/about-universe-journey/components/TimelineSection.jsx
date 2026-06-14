@@ -29,7 +29,7 @@ print(f"Nice to meet you, {name}!")`,
       id: 'high-school',
       category: 'Academic Foundation',
       title: 'High School Excellence',
-      period: '2008 – 2023',
+      period: '2019 – 2023',
       icon: 'GraduationCap',
       preview: 'Graduated with 80% average, specialising in STEM subjects and early exposure to programming.',
       fullDescription: `During high school, I maintained an 80% average while taking every available computer science course, actively exploring programming, algorithms, and web development to build a solid foundation in computational thinking and problem-solving.`,
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         >
           {[
             { label: 'Years Coding', value: '3+', icon: 'Code2' },
-            { label: 'Projects Built', value: '7+', icon: 'FolderOpen' },
+            { label: 'Projects Built', value: '9+', icon: 'FolderOpen' },
             { label: 'Competitions', value: '5', icon: 'Trophy' },
             { label: 'Certifications', value: '5', icon: 'Award' }
           ].map((stat) => (

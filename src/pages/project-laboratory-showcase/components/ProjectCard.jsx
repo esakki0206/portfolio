@@ -44,6 +44,15 @@ const ProjectCard = ({ project, onViewDetails, index }) => {
             </div>
           </div>
 
+          {/* Year Badge */}
+          {project?.year && (
+            <div className="absolute top-3 left-3 z-10">
+              <span className="px-2.5 py-1 rounded-md text-xs font-bold bg-background/80 backdrop-blur-md text-accent shadow-lg border border-accent/20">
+                {project.year}
+              </span>
+            </div>
+          )}
+
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
         </div>

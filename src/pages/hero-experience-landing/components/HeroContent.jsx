@@ -59,6 +59,7 @@ const HeroContent = () => {
         {/* Download PDF */}
         <a
           href="/Esakki_resume.pdf"
+          id="resume-pdf-download"
           target="_blank"
           rel="noopener noreferrer"
           download="Esakkiappan_Resume.pdf"
@@ -72,7 +73,8 @@ const HeroContent = () => {
 
         {/* View HTML */}
         <a
-          href="Esakki_resume.html"
+          href="/Esakki_resume.html"
+          id="resume-html-view"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors duration-200 group"

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 import Header from '../../components/ui/Header';
 import Footer from '../../components/ui/Footer';
 import ProjectCard from './components/ProjectCard';
@@ -42,6 +43,17 @@ const ProjectLaboratoryShowcase = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Helmet>
+        <title>Projects — Esakkiappan Portfolio</title>
+        <meta
+          name="description"
+          content="Explore 9+ real-world projects: full-stack web apps, IoT prototypes, and AR mobile apps built by Esakkiappan E."
+        />
+        <meta property="og:title" content="Projects — Esakkiappan Portfolio" />
+        <meta property="og:description" content="Real projects, real impact. Full-stack web apps, IoT, and AR development." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <Header />
 
       {/* Hero */}
